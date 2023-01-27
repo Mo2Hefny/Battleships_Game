@@ -2,14 +2,14 @@
 //
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Headers.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1000, 800), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-
-    while (window.isOpen())
+    sf::RenderWindow window(sf::VideoMode(_WIDTH_, _HEIGHT_), "Battleships");
+    MainMenu menu(_WIDTH_, _HEIGHT_, window);
+    menu.Execute();
+    /*while (window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event))
@@ -19,9 +19,9 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
+        menu.draw();
         window.display();
-    }
+    }*/
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
