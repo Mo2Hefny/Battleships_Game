@@ -60,6 +60,54 @@ void MainMenu::MoveDown()
 	}
 }
 
+/*
+* Switch - switch to the choosen Menu option.
+*/
+void MainMenu::Switch()
+{
+	if (CurrentSelected() == -1) return;
+
+	switch (CurrentSelected())
+	{
+	case 0:
+		Game = new GameSystem(_WIDTH_, _HEIGHT_, *Menu);
+		delete Game;
+		Game = NULL;
+		break;
+	case 1:
+		options = new Options(_WIDTH_, _HEIGHT_, *Menu);
+		delete options;
+		options = NULL;
+		break;
+	case 2:
+		Menu->close();
+		break;
+	default:
+		break;
+	}
+}
+
+/*
+* OnText - checks if the mouse is on the text and updates the selected item.
+*/
+bool MainMenu::OnText() const
+{
+	Vector2i pos = Mouse::getPosition();
+	if (pos.x > 452 && pos.x < 600 && pos.y > 379 && pos.y < 433)
+	{
+		return true;
+	}
+	else if (pos.x > 452 && pos.x < 722 && pos.y > 474 && pos.y < 536)
+	{
+		return true;
+	}
+	else if (pos.x > 452 && pos.x < 590 && pos.y > 580 && pos.y < 630)
+	{
+		return true;
+	}
+	return false;
+}
+
 void MainMenu::Execute()
 {
 	RectangleShape Background, PBackground, OBackground;
@@ -95,62 +143,7 @@ void MainMenu::Execute()
 				}
 				else if (event.key.code == sf::Keyboard::Enter)
 				{
-					if (CurrentSelected() == -1) break;
-					RenderWindow Play(VideoMode(_WIDTH_, _HEIGHT_), "Battleships!!");
-					RenderWindow Options(VideoMode(_WIDTH_, _HEIGHT_), "Options");
-
-					switch (CurrentSelected())
-					{
-					case 0:
-						while (Play.isOpen())
-						{
-							Event event;
-							while (Play.pollEvent(event))
-							{
-								// Request for closing the window
-								if (event.type == Event::Closed)
-									Play.close();
-								if (event.type == Event::KeyPressed)
-								{
-									// The escape key was pressed
-									if (event.key.code == sf::Keyboard::Escape)
-										Play.close();
-								}
-							}
-							Options.close();
-							Play.clear();
-							Play.draw(PBackground);
-							Play.display();
-						}
-						break;
-					case 1:
-						while (Options.isOpen())
-						{
-							Event event;
-							while (Options.pollEvent(event))
-							{
-								// Request for closing the window
-								if (event.type == Event::Closed)
-									Options.close();
-								if (event.type == Event::KeyPressed)
-								{
-									// The escape key was pressed
-									if (event.key.code == sf::Keyboard::Escape)
-										Options.close();
-								}
-							}
-							Play.close();
-							Options.clear();
-							Options.draw(OBackground);
-							Options.display();
-						}
-						break;
-					case 2:
-						Menu->close();
-						break;
-					default:
-						break;
-					}
+					Switch();
 				}
 			}
 			
@@ -179,64 +172,11 @@ void MainMenu::Execute()
 			}
 			else if (Mouse::isButtonPressed(Mouse::Left))
 			{
-				if (CurrentSelected() == -1) break;
-				RenderWindow Play(VideoMode(_WIDTH_, _HEIGHT_), "Battleships!!");
-				RenderWindow Options(VideoMode(_WIDTH_, _HEIGHT_), "Options");
-
-				switch (CurrentSelected())
-				{
-				case 0:
-					while (Play.isOpen())
-					{
-						Event event;
-						while (Play.pollEvent(event))
-						{
-							// Request for closing the window
-							if (event.type == Event::Closed)
-								Play.close();
-							if (event.type == Event::KeyPressed)
-							{
-								// The escape key was pressed
-								if (event.key.code == sf::Keyboard::Escape)
-									Play.close();
-							}
-						}
-						Options.close();
-						Play.clear();
-						Play.draw(PBackground);
-						Play.display();
-					}
-					break;
-				case 1:
-					while (Options.isOpen())
-					{
-						Event event;
-						while (Options.pollEvent(event))
-						{
-							// Request for closing the window
-							if (event.type == Event::Closed)
-								Options.close();
-							if (event.type == Event::KeyPressed)
-							{
-								// The escape key was pressed
-								if (event.key.code == sf::Keyboard::Escape)
-									Options.close();
-							}
-						}
-						Play.close();
-						Options.clear();
-						Options.draw(OBackground);
-						Options.display();
-					}
-					break;
-				case 2:
-					Menu->close();
-					break;
-				default:
-					break;
-				}
+				if (OnText())
+					Switch();
 			}
 		}
+
 		Menu->clear();
 		Menu->draw(Background);
 		draw();
