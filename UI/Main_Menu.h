@@ -14,21 +14,26 @@ using namespace sf;
 
 class MainMenu {
 	int MainMenuSelected;
+	
+	//Text info
 	Font font;
 	Text MenuText[Max_Menu_Options];
+	Vector2i item_pos[Max_Menu_Options];
+	float width[3], height[3];
+
 	RenderWindow* Menu;
-	Texture Background_img, PBackground_img, OBackground_img;
+	Texture Background_img;
 	GameSystem* Game;
 	Options* options;
 
 public:
-	MainMenu(int width, int height, RenderWindow& window);
+	MainMenu(RenderWindow& window);
 	void Execute();
 	void draw();
 	void MoveUp();
 	void MoveDown();
 	void Switch();
-	bool OnText() const;
+	int OnText() const;
 	int CurrentSelected() const { return MainMenuSelected;  }
 };
 

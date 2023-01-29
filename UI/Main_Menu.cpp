@@ -1,14 +1,12 @@
 #include "Main_Menu.h"
 
-MainMenu::MainMenu(int width, int height, RenderWindow& window)
+MainMenu::MainMenu(RenderWindow& window)
 {
 	//Pointer to window
 	Menu = &window;
 
 	//Set Backgrounds
 	Background_img.loadFromFile(".\\Images\\Menu_Background.jpg");
-	PBackground_img.loadFromFile(".\\Images\\Load.jpg");
-	OBackground_img.loadFromFile(".\\Images\\Menu_Options.jpg");
 
 	if (!font.loadFromFile(".\\Font\\Alexandria.ttf"))
 	{
@@ -20,7 +18,7 @@ MainMenu::MainMenu(int width, int height, RenderWindow& window)
 		MenuText[i].setFont(font);
 		MenuText[i].setFillColor(Color::White);
 		MenuText[i].setCharacterSize(70);
-		MenuText[i].setPosition(120, 150 + i * 100);
+		MenuText[i].setPosition(UI.main_menu->x, UI.main_menu->y + i * 100);
 	}
 	//Play
 	MenuText[0].setString("Play");
@@ -35,7 +33,12 @@ MainMenu::MainMenu(int width, int height, RenderWindow& window)
 void MainMenu::draw()
 {
 	for (int i = 0; i < Max_Menu_Options; i++)
+	{
 		Menu->draw(MenuText[i]);
+		item_pos[i] = (Vector2i)MenuText[i].getPosition();
+		width[i] = MenuText[i].getLocalBounds().width;
+		height[i] = MenuText[i].getLocalBounds().height;
+	}
 }
 
 void MainMenu::MoveUp()
@@ -70,7 +73,10 @@ void MainMenu::Switch()
 	switch (CurrentSelected())
 	{
 	case 0:
+		Menu->clear();
+		Menu->display();
 		Game = new GameSystem(_WIDTH_, _HEIGHT_, *Menu);
+		Game->Execute();
 		delete Game;
 		Game = NULL;
 		break;
@@ -90,33 +96,35 @@ void MainMenu::Switch()
 /*
 * OnText - checks if the mouse is on the text and updates the selected item.
 */
-bool MainMenu::OnText() const
+int MainMenu::OnText() const
 {
-	Vector2i pos = Mouse::getPosition();
-	if (pos.x > 452 && pos.x < 600 && pos.y > 379 && pos.y < 433)
+	Vector2i pos = Mouse::getPosition(*Menu);
+
+	/*cout << "x: " << pos.x << " y: " << pos.y << endl;
+	cout << "x1: " << item_pos[0].x << " y1: " << item_pos[0].y << endl;
+	cout << ": " << pos.x - item_pos[0].x << " : " << width[0] << endl;*/
+
+	if (pos.x - item_pos[0].x < width[0] && pos.x - item_pos[0].x > 0 && pos.y - item_pos[0].y < height[0] && pos.y - item_pos[0].y > 0)
 	{
-		return true;
+		return 0;
 	}
-	else if (pos.x > 452 && pos.x < 722 && pos.y > 474 && pos.y < 536)
+	else if (pos.x - item_pos[1].x < width[1] && pos.x - item_pos[1].x > 0 && pos.y - item_pos[1].y < height[1] && pos.y - item_pos[1].y > 0)
 	{
-		return true;
+
+		return 1;
 	}
-	else if (pos.x > 452 && pos.x < 590 && pos.y > 580 && pos.y < 630)
+	else if (pos.x - item_pos[2].x < width[2] && pos.x - item_pos[2].x > 0 && pos.y - item_pos[2].y < height[2] && pos.y - item_pos[2].y > 0)
 	{
-		return true;
+		return 2;
 	}
-	return false;
+	return -1;
 }
 
 void MainMenu::Execute()
 {
-	RectangleShape Background, PBackground, OBackground;
+	RectangleShape Background;
 	Background.setSize(Vector2f(_WIDTH_, _HEIGHT_));
 	Background.setTexture(&Background_img);
-	PBackground.setSize(Vector2f(_WIDTH_, _HEIGHT_));
-	PBackground.setTexture(&PBackground_img);
-	OBackground.setSize(Vector2f(_WIDTH_, _HEIGHT_));
-	OBackground.setTexture(&OBackground_img);
 
 	while (Menu->isOpen())
 	{
@@ -148,22 +156,22 @@ void MainMenu::Execute()
 			}
 			
 			//Mouse Input
-			Vector2i pos = Mouse::getPosition();
 			if (!Mouse::isButtonPressed(Mouse::Left))
 			{
-				if (pos.x > 452 && pos.x < 600 && pos.y > 379 && pos.y < 433 && MainMenuSelected != 0)
+				int x = OnText();
+				if (x == 0 && MainMenuSelected != 0)
 				{
 					MenuText[MainMenuSelected].setFillColor(Color::White);
 					MainMenuSelected = 0;
 					MenuText[MainMenuSelected].setFillColor(Color::Cyan);
 				}
-				else if (pos.x > 452 && pos.x < 722 && pos.y > 474 && pos.y < 536 && MainMenuSelected != 1)
+				else if (x == 1 && MainMenuSelected != 1)
 				{
 					MenuText[MainMenuSelected].setFillColor(Color::White);
 					MainMenuSelected = 1;
 					MenuText[MainMenuSelected].setFillColor(Color::Cyan);
 				}
-				else if (pos.x > 452 && pos.x < 590 && pos.y > 580 && pos.y < 630 && MainMenuSelected != 2)
+				else if (x == 2 && MainMenuSelected != 2)
 				{
 					MenuText[MainMenuSelected].setFillColor(Color::White);
 					MainMenuSelected = 2;
@@ -172,7 +180,7 @@ void MainMenu::Execute()
 			}
 			else if (Mouse::isButtonPressed(Mouse::Left))
 			{
-				if (OnText())
+				if (OnText() != -1)
 					Switch();
 			}
 		}
