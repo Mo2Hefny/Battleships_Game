@@ -27,33 +27,65 @@ void Grid::draw(int player)
 	}
 }
 
-bool Grid::ColorShip(RenderWindow& window, Color& c, vector<Vector2i>& hitbox)
+void Grid::ColorShip(Color& c, vector<Vector2i>& hitbox)
 {
 	bool empty_space = true;
 	for (int i = 0; i < hitbox.size(); i++)
 	{
-		if (grid[hitbox[i].x][hitbox[i].y].getFillColor() == c)
-			empty_space = false;
-		grid[hitbox[i].x][hitbox[i].y].setFillColor(Color::White);
-		grid[hitbox[i].x][hitbox[i].y].setFillColor(c);
+		if (placement[hitbox[i].x][hitbox[i].y] == 0 && c == UI.GridColor)
+		{
+			grid[hitbox[i].x][hitbox[i].y].setFillColor(Color::White);
+			grid[hitbox[i].x][hitbox[i].y].setFillColor(c);
+		}
+		else if (c != UI.GridColor)
+		{
+			grid[hitbox[i].x][hitbox[i].y].setFillColor(Color::White);
+			grid[hitbox[i].x][hitbox[i].y].setFillColor(c);
+		}
 		//window.draw(grid[hitbox[i].x][hitbox[i].y]);
 	}
-	return false;
 }
 
-bool Grid::CheckValidity(Color c)
+int Grid::CheckValidity()
 {
 	int count = 0;
 	for (int i = 0; i < 10; i++)
 	{
 		for (int j = 0; j < 10; j++)
 		{
-			if (grid[i][j].getFillColor() == c)
+			if (placement[i][j] == 0)
 				count++;
+			if (placement[i][j] != 0 && placement[i][j] != -1)
+			{
+				return 0;
+			}
 		}
 	}
-	if (count == 17)
-		return true;
-	return false;
+	if (count == 83)
+		return 1;
+	return -1;
+}
+
+void Grid::setPlacements(vector<Vector2i> hitbox, int mode)
+{
+	for (int i = 0; i < hitbox.size(); i++)
+	{
+		int x = hitbox[i].x, y = hitbox[i].y;
+		if (mode)	//add ship hitbox
+			placement[x][y] -= 1;
+		else		//remove ship hitbox
+			placement[x][y] = (placement[x][y] + 1 > 0) ? 0 : placement[x][y] + 1;
+	}
+}
+
+void Grid::resetPlacements()
+{
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			placement[i][j] = 0;
+		}
+	}
 }
 

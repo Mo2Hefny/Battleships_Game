@@ -10,15 +10,18 @@ using namespace sf;
 
 class Grid
 {
+	int placement[10][10];
 	RectangleShape grid[10][10];
 	RenderWindow* game_window;
 public:
 	Grid();
-	bool CheckValidity(Color c);
+	int CheckValidity();
 	void draw(int player);
-	bool ColorShip(RenderWindow& window, Color& c, vector<Vector2i>&);
+	void ColorShip(Color& c, vector<Vector2i>&);
+	void resetPlacements();
 
 	//setters
+	void setPlacements(vector<Vector2i>, int);
 	void setWindow(RenderWindow& window) { game_window = &window; }
 };
 
