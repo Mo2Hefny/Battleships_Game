@@ -134,11 +134,36 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Battleships.cpp" />
+    <ClCompile Include="Characters\Character.cpp" />
+    <ClCompile Include="Characters\Computer.cpp" />
+    <ClCompile Include="Characters\Player.cpp" />
+    <ClCompile Include="Ships\Battleship.cpp" />
+    <ClCompile Include="Ships\Carrier.cpp" />
+    <ClCompile Include="Ships\Cruiser.cpp" />
+    <ClCompile Include="Ships\Ship.cpp" />
+    <ClCompile Include="Ships\Submarine.cpp" />
+    <ClCompile Include="Ships\Warship.cpp" />
+    <ClCompile Include="UI\Grid.cpp" />
     <ClCompile Include="UI\Main_Menu.cpp" />
+    <ClCompile Include="GameManager\GameSystem.cpp" />
+    <ClCompile Include="UI\Options.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Characters\Character.h" />
+    <ClInclude Include="Characters\Computer.h" />
+    <ClInclude Include="Characters\Player.h" />
+    <ClInclude Include="DEFS.h" />
     <ClInclude Include="Headers.h" />
+    <ClInclude Include="Ships\Battleship.h" />
+    <ClInclude Include="Ships\Carrier.h" />
+    <ClInclude Include="Ships\Cruiser.h" />
+    <ClInclude Include="Ships\Ship.h" />
+    <ClInclude Include="Ships\Submarine.h" />
+    <ClInclude Include="Ships\Warship.h" />
+    <ClInclude Include="UI\Grid.h" />
     <ClInclude Include="UI\Main_Menu.h" />
+    <ClInclude Include="GameManager\GameSystem.h" />
+    <ClInclude Include="UI\Options.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,26 +2,56 @@
 //
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Headers.h"
+#include "UI/Main_Menu.h"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(_WIDTH_, _HEIGHT_), "Battleships");
-    MainMenu menu(_WIDTH_, _HEIGHT_, window);
+    //window.setFramerateLimit();
+    MainMenu menu(window);
     menu.Execute();
-    /*while (window.isOpen())
+    //GameSystem game(_WIDTH_, _HEIGHT_, window);
+    /*Texture img;
+    Sprite s;
+    img.loadFromFile(".\\Images\\Battleship.png");
+    s.setTexture(img);
+    s.setScale(0.25, 0.25);*/
+    RectangleShape test;
+    test.setSize(Vector2f(25, 25));
+
+    //Set color half transparent
+    test.setFillColor(UI.GridColor);
+    test.setPosition(200, 200);
+    window.draw(test);
+    while (window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            if (event.type == Event::KeyPressed)
+            {
+                // The escape key was pressed
+                if (event.key.code == sf::Keyboard::Escape)
+                    window.close();
+                if (event.key.code == sf::Keyboard::Up)
+                {
+                    test.setFillColor(UI.ShipColor);
+                }
+                if (event.key.code == sf::Keyboard::Down)
+                {
+                    test.setFillColor(UI.GridColor);
+                }
+
+            }
         }
 
-        window.clear();
-        menu.draw();
+       //window.clear();
+        window.draw(test);
         window.display();
-    }*/
+    }
+    UI.clean();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
