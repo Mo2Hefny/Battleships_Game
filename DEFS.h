@@ -49,6 +49,7 @@ struct UI_Settings
 	Color Player_theme = Color(0, 255, 255, 200);
 	Color Computer_theme = Color(255, 0, 0, 200);
 	Color TextColor = Color(255, 255, 255, 200);
+	Color Secondary = Color(192, 192, 192, 100);
 	Color HitColor = Color(235, 33, 46, 150);
 	Color ShipColor = Color(0, 195, 227, 150);
 	PlayState mode;
