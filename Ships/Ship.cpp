@@ -11,12 +11,25 @@ Ship::Ship(RenderWindow& window)
 
 void Ship::PrepPhase()
 {
+	int r = row;
 	int c = col;
-	for (int i = 0; i < hitbox.size(); i++)
+	if (getRotation() == horizontal)
 	{
-		hitbox[i].x = 0;
-		hitbox[i].y = c++;
+		for (int i = 0; i < hitbox.size(); i++)
+		{
+			hitbox[i].x = r;
+			hitbox[i].y = c++;
+		}
 	}
+	else
+	{
+		for (int i = 0; i < hitbox.size(); i++)
+		{
+			hitbox[i].x = r++;
+			hitbox[i].y = c;
+		}
+	}
+	
 }
 
 void Ship::MoveUp()
