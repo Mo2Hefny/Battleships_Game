@@ -3,7 +3,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "../DEFS.h"
 #include "../UI/Grid.h"
 
 using namespace std;

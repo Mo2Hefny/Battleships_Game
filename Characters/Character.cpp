@@ -29,7 +29,7 @@ bool Character::ShotTracker(Vector2i pos)
 		return false;
 
 	UI_s.shotL.play();
-	Sleep(_WAIT_);
+	std::this_thread::sleep_for(std::chrono::milliseconds(_WAIT_));
 
 	if (placement[x][y] == 0)
 		placement[x][y] = -1;

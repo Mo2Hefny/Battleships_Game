@@ -4,9 +4,9 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
-#include <windows.h>
-#include <MMSystem.h.>
 #include <fstream>
+#include <chrono>
+#include <thread>
 
 #define	_WIDTH_	1600	
 #define _HEIGHT_ 900

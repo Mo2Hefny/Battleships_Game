@@ -613,7 +613,7 @@ void GameSystem::GamePhase()
 		Vector2i pos_comp;
 		if (!turn)
 		{
-			Sleep(700);
+			std::this_thread::sleep_for(std::chrono::milliseconds(700));
 			GameComputer(pos_comp);
 			turn = !turn;
 		}

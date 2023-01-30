@@ -3,7 +3,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "../DEFS.h"
 #include "../GameManager/GameSystem.h"
 #include "Options.h"
 
