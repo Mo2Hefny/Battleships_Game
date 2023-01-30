@@ -2,11 +2,23 @@
 
 MainMenu::MainMenu(RenderWindow& window)
 {
+	srand(time(0));
 	//Pointer to window
 	Menu = &window;
 
 	//Set Backgrounds
-	Background_img.loadFromFile(".\\Images\\Menu_Background.jpg");
+	switch (abs(rand()) % 3)
+	{
+	case 0:
+		Background_img.loadFromFile(".\\Images\\Menu.jpg");
+		break;
+	case 1:
+		Background_img.loadFromFile(".\\Images\\Menu1.jpg");
+		break;
+	case 2:
+		Background_img.loadFromFile(".\\Images\\Menu_Background.jpg");
+		break;
+	}
 
 	if (!font.loadFromFile(".\\Font\\Alexandria.ttf"))
 	{
@@ -28,6 +40,19 @@ MainMenu::MainMenu(RenderWindow& window)
 	MenuText[2].setString("Exit");
 
 	MainMenuSelected = -1;
+
+	//Initialize pointers
+	Game = NULL;
+	options = NULL;
+	
+}
+
+MainMenu::~MainMenu()
+{
+	if (Game != NULL)
+		delete Game;
+	if (options != NULL)
+		delete options;
 }
 
 void MainMenu::draw()
@@ -48,7 +73,7 @@ void MainMenu::MoveUp()
 		MenuText[MainMenuSelected].setFillColor(Color::White);
 		MainMenuSelected--;
 		MainMenuSelected = (MainMenuSelected == -1) ? 2 : MainMenuSelected;
-		MenuText[MainMenuSelected].setFillColor(Color::Cyan);
+		MenuText[MainMenuSelected].setFillColor(UI.Player_theme);
 	}
 }
 
@@ -59,7 +84,7 @@ void MainMenu::MoveDown()
 		MenuText[MainMenuSelected].setFillColor(Color::White);
 		MainMenuSelected++;
 		MainMenuSelected = (MainMenuSelected == 3) ? 0 : MainMenuSelected;
-		MenuText[MainMenuSelected].setFillColor(Color::Cyan);
+		MenuText[MainMenuSelected].setFillColor(UI.Player_theme);
 	}
 }
 
@@ -69,21 +94,20 @@ void MainMenu::MoveDown()
 void MainMenu::Switch()
 {
 	if (CurrentSelected() == -1) return;
-
+	if (options == NULL)
+		options = new Options(*Menu);
 	switch (CurrentSelected())
 	{
 	case 0:
-		Menu->clear();
-		Menu->display();
-		Game = new GameSystem(_WIDTH_, _HEIGHT_, *Menu);
+		Load();
+		if (Game == NULL)
+			Game = new GameSystem(*Menu, options);
 		Game->Execute();
 		delete Game;
 		Game = NULL;
 		break;
 	case 1:
-		options = new Options(_WIDTH_, _HEIGHT_, *Menu);
-		delete options;
-		options = NULL;
+		options->Execute();
 		break;
 	case 2:
 		Menu->close();
@@ -91,6 +115,36 @@ void MainMenu::Switch()
 	default:
 		break;
 	}
+}
+
+void MainMenu::Load()
+{
+	Menu->clear();
+	RectangleShape Background;
+	Texture LBackground_img;
+	Background.setSize(Vector2f(_WIDTH_, _HEIGHT_));
+	switch (abs(rand()) % 3)
+	{
+	case 0:
+		LBackground_img.loadFromFile(".\\Images\\Load.jpg");
+		break;
+	case 1:
+		LBackground_img.loadFromFile(".\\Images\\Load1.jpg");
+		break;
+	case 2:
+		LBackground_img.loadFromFile(".\\Images\\Load2.jpg");
+		break;
+	}
+	Background.setTexture(&LBackground_img);
+	Menu->draw(Background);
+	Text loading;
+	loading.setFont(font);
+	loading.setFillColor(UI.TextColor);
+	loading.setString("Loading...");
+	loading.setCharacterSize(30);
+	loading.setPosition(67, 815);
+	Menu->draw(loading);
+	Menu->display();
 }
 
 /*
@@ -125,6 +179,8 @@ void MainMenu::Execute()
 	RectangleShape Background;
 	Background.setSize(Vector2f(_WIDTH_, _HEIGHT_));
 	Background.setTexture(&Background_img);
+	
+	UI_s.Main_music.play();
 
 	while (Menu->isOpen())
 	{
@@ -142,15 +198,18 @@ void MainMenu::Execute()
 				else if (event.key.code == sf::Keyboard::Up)
 				{
 					MoveUp();
+					UI_s.hover.play();
 					break;
 				}
 				else if (event.key.code == sf::Keyboard::Down)
 				{
 					MoveDown();
+					UI_s.hover.play();
 					break;
 				}
 				else if (event.key.code == sf::Keyboard::Enter)
 				{
+					UI_s.select.play();
 					Switch();
 				}
 			}
@@ -163,25 +222,31 @@ void MainMenu::Execute()
 				{
 					MenuText[MainMenuSelected].setFillColor(Color::White);
 					MainMenuSelected = 0;
-					MenuText[MainMenuSelected].setFillColor(Color::Cyan);
+					MenuText[MainMenuSelected].setFillColor(UI.Player_theme);
+					UI_s.hover.play();
 				}
 				else if (x == 1 && MainMenuSelected != 1)
 				{
 					MenuText[MainMenuSelected].setFillColor(Color::White);
 					MainMenuSelected = 1;
-					MenuText[MainMenuSelected].setFillColor(Color::Cyan);
+					MenuText[MainMenuSelected].setFillColor(UI.Player_theme);
+					UI_s.hover.play();
 				}
 				else if (x == 2 && MainMenuSelected != 2)
 				{
 					MenuText[MainMenuSelected].setFillColor(Color::White);
 					MainMenuSelected = 2;
-					MenuText[MainMenuSelected].setFillColor(Color::Cyan);
+					MenuText[MainMenuSelected].setFillColor(UI.Player_theme);
+					UI_s.hover.play();
 				}
 			}
 			else if (Mouse::isButtonPressed(Mouse::Left))
 			{
 				if (OnText() != -1)
+				{
+					UI_s.select.play();
 					Switch();
+				}
 			}
 		}
 

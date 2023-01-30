@@ -10,14 +10,17 @@ using namespace sf;
 
 class Grid
 {
-	int placement[10][10];
+	int placement[10][10], shot_count;
 	RectangleShape grid[10][10];
+	CircleShape* shots[100];
 	RenderWindow* game_window;
 public:
 	Grid();
+	~Grid();
 	int CheckValidity();
 	void draw(int player);
 	void ColorShip(Color& c, vector<Vector2i>&);
+	int HitGrid(Vector2i&);
 	void resetPlacements();
 
 	//setters

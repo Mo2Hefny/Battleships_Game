@@ -19,18 +19,21 @@ protected:
 	Ship* player_ships[5];
 
 public:
-	Character() {}
 	Character(RenderWindow& window, Grid* grid);
+	virtual ~Character() {}
 
 	void resetPlacements();
+	bool ShotTracker(Vector2i);
+	void CheckShipsHealth();
 
 	//setters
-	bool setPlacements(vector<Vector2i>);
+	void setPlacements();
 	//void setGameSystem(GameSystem& game);
 
 	//getters
-	int (*(getPlacement)())[10] { return placement; }
-	Ship* getShip(int index) { return player_ships[index]; }
+	int getPlacement(int i, int j) { return placement[i][j]; }
+	PlayerState getState() const { return state; }
+	Ship* getShip(int index) const { return player_ships[index]; }
 
 };
 

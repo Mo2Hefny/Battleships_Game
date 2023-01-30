@@ -7,6 +7,7 @@ Ship::Ship(RenderWindow& window)
 	position.y = UI.player1->y;
 	rotation = horizontal;
 	row = col = 0;
+	health = alive;
 }
 
 void Ship::PrepPhase()
@@ -36,7 +37,11 @@ void Ship::MoveUp()
 {
 	if (getRotation() == horizontal)
 	{
-		if (row - 1 < 0) return;
+		if (row - 1 < 0)
+		{
+			UI_s.barrier.play();
+			return;
+		}
 		int r = --row;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
@@ -45,20 +50,29 @@ void Ship::MoveUp()
 	}
 	else
 	{
-		if (row - 1 < 0) return;
+		if (row - 1 < 0)
+		{
+			UI_s.barrier.play();
+			return;
+		}
 		int r = --row;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
 			hitbox[i].x = r++;
 		}
 	}
+	UI_s.move.play();
 }
 
 void Ship::MoveDown()
 {
 	if (getRotation() == horizontal)
 	{
-		if (row + 1 > 9) return;
+		if (row + 1 > 9) 
+		{
+			UI_s.barrier.play();
+			return;
+		}
 		int r = ++row;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
@@ -67,20 +81,29 @@ void Ship::MoveDown()
 	}
 	else
 	{
-		if (row + hitbox.size() > 9) return;
+		if (row + hitbox.size() > 9) 
+		{
+			UI_s.barrier.play();
+			return;
+		}
 		int r = ++row;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
 			hitbox[i].x = r++;
 		}
 	}
+	UI_s.move.play();
 }
 
 void Ship::MoveLeft()
 {
 	if (getRotation() == horizontal)
 	{
-		if (col - 1 < 0) return;
+		if (col - 1 < 0) 
+		{
+			UI_s.barrier.play();
+			return;
+		}
 		int c = --col;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
@@ -89,20 +112,29 @@ void Ship::MoveLeft()
 	}
 	else
 	{
-		if (col - 1 < 0) return;
+		if (col - 1 < 0) 
+		{
+			UI_s.barrier.play();
+			return;
+		}
 		int c = --col;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
 			hitbox[i].y = c;
 		}
 	}
+	UI_s.move.play();
 }
 
 void Ship::MoveRight()
 {
 	if (getRotation() == horizontal)
 	{
-		if (col + hitbox.size() > 9) return;
+		if (col + hitbox.size() > 9) 
+		{
+			UI_s.barrier.play();
+			return;
+		}
 		int c = ++col;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
@@ -111,13 +143,18 @@ void Ship::MoveRight()
 	}
 	else
 	{
-		if (col + 1 > 9) return;
+		if (col + 1 > 9) 
+		{
+			UI_s.barrier.play();
+			return;
+		}
 		int c = ++col;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
 			hitbox[i].y = c;
 		}
 	}
+	UI_s.move.play();
 }
 
 void Ship::Rotate()
@@ -126,7 +163,11 @@ void Ship::Rotate()
 	int r = hitbox[0].x;
 	if (getRotation() == horizontal)
 	{
-		if (r + hitbox.size() > 10) return;
+		if (r + hitbox.size() > 10) 
+		{
+			UI_s.barrier.play();
+			return;
+		}
 		setRotation(vertical);
 		for (int i = 1; i < hitbox.size(); i++)
 		{
@@ -136,7 +177,11 @@ void Ship::Rotate()
 	}
 	else
 	{
-		if (c + hitbox.size() > 10) return;
+		if (c + hitbox.size() > 10) 
+		{
+			UI_s.barrier.play();
+			return;
+		}
 		setRotation(horizontal);
 		for (int i = 1; i < hitbox.size(); i++)
 		{
@@ -144,6 +189,7 @@ void Ship::Rotate()
 			hitbox[i].y = ++c;
 		}
 	}
+	UI_s.rotate.play();
 }
 
 bool Ship::setRow(int r)

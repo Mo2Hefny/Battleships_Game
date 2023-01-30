@@ -5,6 +5,7 @@
 #include <iostream>
 #include "../Characters/Player.h"
 #include "../Characters/Computer.h"
+#include "../UI/Options.h"
 
 using namespace std;
 using namespace sf;
@@ -13,35 +14,57 @@ class Player;
 class Computer;
 class GameSystem
 {
+	int MenuSelected;
 	RenderWindow* game_window;
 	PlayState mode;
 	Player* player;
 	Computer* computer;
+	Options* settings;
 	Grid grid[2];
 
 	//UI
 	Font font;
-	Text Players_name[2], prep_ships, status_bar_msg;
-	Texture PBackground_img, carrierT, battleshipT, cruiserT, subT, warshipT, status_barT;
-	RectangleShape PBackground, Sections[3], Underline[3];
-	Sprite carrier, battleship, cruiser, sub, warship, status_bar;
+	Text Players_name[2], prep_ships, status_bar_msg, menuOpT[4];
+	Texture PBackground_img, carrierT, battleshipT, cruiserT, subT, warshipT, status_barT, menu_dropT;
+	RectangleShape PBackground, Sections[3], Underline[3], popup, menuOp[4];
+	Sprite carrier, battleship, cruiser, sub, warship, status_bar, menu_drop;
 
 public:
-	GameSystem(int width, int height, RenderWindow& window);
+	GameSystem(RenderWindow& window, Options*);
+	~GameSystem();
 	void Execute();
 	void draw();
-	void PrepPhase();
+	
+
+	//Preparation Phase
 	void PrepUI();
+	void PrepPhase();
 	void PrepComputer();
 	void SelectedShip();
 	void UpdateGrid(Color& , vector<Vector2i>&, int = 0);
-	PlayState CurrentMode() const { return mode; }
+
+	//GamePlay
+	void GamePhase();
+	Vector2i getGridPos();
+	int CheckWinner();
+	void GameComputer(Vector2i& pos);
+
+	//Menu
+	bool OpenedMenu();
+	void OpenMenu();
+	void MoveUp();
+	void MoveDown();
+	void PrepMenu();
+	void Switch();
+	int CurrentSelected() const { return MenuSelected; }
+	int OnText() const;
 	
 	//setters
 	void setMode(PlayState state) { mode = state; }
 	void setString(string s) { status_bar_msg.setString(s); }
 
 	//getters
+	PlayState CurrentMode() const { return mode; }
 	
 
 };

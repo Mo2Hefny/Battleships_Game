@@ -15,7 +15,7 @@ class Options
 	Texture OBackground_img;
 	RectangleShape OBackground;
 public:
-	Options(int width, int height, RenderWindow& window);
+	Options(RenderWindow& window);
 	void Execute();
 	void draw();
 	OptionMenu CurrentMode() const { return mode; }

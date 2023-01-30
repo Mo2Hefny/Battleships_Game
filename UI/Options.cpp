@@ -1,16 +1,15 @@
 #include "Options.h"
 
-Options::Options(int width, int height, RenderWindow& window)
+Options::Options(RenderWindow& window)
 {
 	//Pointer to window
 	Menu = &window;
 	Menu->clear();
 
 	//Set Background
-	OBackground_img.loadFromFile(".\\Images\\Menu_Options.jpg");
+	OBackground_img.loadFromFile(".\\Images\\Options.jpeg");
 	OBackground.setSize(Vector2f(_WIDTH_, _HEIGHT_));
 	OBackground.setTexture(&OBackground_img);
-	Menu->draw(OBackground);
 
 	if (!font.loadFromFile(".\\Font\\Alexandria.ttf"))
 	{
@@ -18,7 +17,12 @@ Options::Options(int width, int height, RenderWindow& window)
 	}
 
 	mode = sound;
-	Menu->display();
+	
+	
+}
+
+void Options::draw()
+{
 	while (CurrentMode() != closed_op)
 	{
 		sf::Event event;
@@ -32,6 +36,16 @@ Options::Options(int width, int height, RenderWindow& window)
 				setMode(closed_op);
 			}
 		}
-
+		Menu->clear();
+		Menu->draw(OBackground);
+		Menu->display();
 	}
+}
+
+void Options::Execute()
+{
+	Menu->clear();
+	Menu->display();
+	setMode(sound);
+	draw();
 }

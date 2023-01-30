@@ -28,11 +28,13 @@ class MainMenu {
 
 public:
 	MainMenu(RenderWindow& window);
+	~MainMenu();
 	void Execute();
 	void draw();
 	void MoveUp();
 	void MoveDown();
 	void Switch();
+	void Load();
 	int OnText() const;
 	int CurrentSelected() const { return MainMenuSelected;  }
 };

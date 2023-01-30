@@ -15,6 +15,7 @@ class Ship
 	Vector2f position;
 	Direction rotation;
 	Sprite sprite;
+	PlayerState health;
 	int row, col;
 
 protected:
@@ -34,6 +35,7 @@ public:
 	//setters
 	void setPosition(Vector2f pos) { position = pos; }
 	void setRotation(Direction d) { rotation = d; }
+	void setHealth(PlayerState mode) { health = mode; }
 	bool setRow(int r);
 	bool setColumn(int c);
 
@@ -41,6 +43,7 @@ public:
 	Sprite getSprite() const { return sprite; }
 	RenderWindow* getWindow() const { return game_window; }
 	Direction getRotation() const { return rotation; }
+	PlayerState getHealth() const { return health; }
 	virtual vector<Vector2i>& getHitbox() { return hitbox; }
 };
 
