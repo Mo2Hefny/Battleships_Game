@@ -179,7 +179,7 @@ void MainMenu::Execute()
 	RectangleShape Background;
 	Background.setSize(Vector2f(_WIDTH_, _HEIGHT_));
 	Background.setTexture(&Background_img);
-	
+
 	UI_s.Main_music.play();
 
 	while (Menu->isOpen())
