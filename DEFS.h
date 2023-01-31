@@ -18,7 +18,7 @@ int MUSIC_VOLUME = 50;
 
 __declspec(selectany) //This line to prevent "redefinition error"
 
-int VOLUME = 50;
+int VOLUME = 30;
 
 using namespace sf;
 

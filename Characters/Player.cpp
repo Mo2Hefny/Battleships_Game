@@ -48,3 +48,14 @@ void Player::setSelected(char c)
 		break;
 	}
 }
+
+int Player::getDeadCount() const
+{
+	int count = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		if (player_ships[i]->getHealth() == dead)
+			count++;
+	}
+	return count;
+}

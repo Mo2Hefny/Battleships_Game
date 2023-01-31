@@ -398,6 +398,30 @@ int GameSystem::OnText() const
 
 void GameSystem::draw()
 {
+	if (UI.mode == game)
+	{
+		if (player->getShip(0)->getHealth() == dead)
+		{
+			carrier.setColor(UI.GridColor);
+		}
+		if (player->getShip(1)->getHealth() == dead)
+		{
+			battleship.setColor(UI.GridColor);
+		}
+		if (player->getShip(2)->getHealth() == dead)
+		{
+			cruiser.setColor(UI.GridColor);
+		}
+		if (player->getShip(3)->getHealth() == dead)
+		{
+			sub.setColor(UI.GridColor);
+		}
+		if (player->getShip(4)->getHealth() == dead)
+		{
+			warship.setColor(UI.GridColor);
+		}
+	}
+
 	game_window->draw(PBackground);
 	game_window->draw(Sections[0]);
 	game_window->draw(Sections[1]);
@@ -696,18 +720,35 @@ void GameSystem::GamePhase()
 
 void GameSystem::GameComputer(Vector2i& pos)
 {
-	computer->PickTarget(pos);
-	printf("Target acquired (%d, %d)\n", pos.x, pos.y);
-	if (grid[0].HitGrid(pos) == -1)
-		GameComputer(pos);
+	Vector2i pos2 = pos;
+	if (computer->FinishShips(pos2))
+	{
+		printf("Finishing Target (%d, %d)\n", pos2.x, pos2.y);
+		if (!player->ShotTracker(pos2))
+			cout << "YSTAAAAAAAA#\n";
+		grid[0].HitGrid(pos2);
+		computer->updateEnemyPlacements();
+	}
 	else
 	{
-		for (int i = 0; i < 5; i++)
+		computer->PickTarget(pos);
+		printf("Target acquired (%d, %d)\n", pos.x, pos.y);
+		int x = grid[0].HitGrid(pos);
+		if (x == -1)
+			GameComputer(pos);
+		else
 		{
-			if (player->getShip(i)->getHealth() == dead)
+			if (x == 1)
 			{
-				UpdateGrid(UI.HitColor, player->getShip(i)->getHitbox(), 0);
+				computer->setInitialHit(pos);
 			}
+		}
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		if (player->getShip(i)->getHealth() == dead)
+		{
+			UpdateGrid(UI.HitColor, player->getShip(i)->getHitbox(), 0);
 		}
 	}
 }

@@ -64,6 +64,7 @@ void Character::CheckShipsHealth()
 		{
 			count++;
 			player_ships[i]->setHealth(dead);
+			cout << "Ship Destroyed.\n";
 			UI_s.explosion.stop();
 			UI_s.explosion_ship.play();
 		}

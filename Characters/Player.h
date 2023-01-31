@@ -13,6 +13,7 @@ public:
 
 	//getters
 	Ship* getSelected() const { return selected_ship; }
+	int getDeadCount() const;
 
 	//setters
 	void setSelected(char);
