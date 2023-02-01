@@ -162,47 +162,95 @@ void GameSystem::PrepUI()
 	
 }
 
+/*
+* PrepMenu - prepares the popup menus for options or result screen.
+*/
 void GameSystem::PrepMenu()
 {
-	//Menu
+	// Menu Size
+	if (CurrentMode() == menu)
+	{
 	popup.setPosition(_WIDTH_ / 2 - 200, _HEIGHT_ / 2 - 300);
 	popup.setSize(Vector2f(400, 600));
+	}
+	// Result Menu Size
+	else if (CurrentMode() == endgame)
+	{
+		popup.setPosition(_WIDTH_ / 2 - 200, _HEIGHT_ / 2 - 150);
+		popup.setSize(Vector2f(400, 300));
+	}
 	popup.setFillColor(UI.PopUps);
 
-	//Exit Button
-	menuOp[0].setPosition(_WIDTH_ / 2 - 105, _HEIGHT_ / 2 - 300 + 70);
-	menuOp[0].setSize(Vector2f(210, 70));
-	menuOp[0].setFillColor(UI.Sections);
-	menuOp[1].setPosition(_WIDTH_ / 2 - 105, _HEIGHT_ / 2 - 300 + 200);
-	menuOp[1].setSize(Vector2f(210, 70));
-	menuOp[1].setFillColor(UI.Sections);
-	menuOp[2].setPosition(_WIDTH_ / 2 - 105, _HEIGHT_ / 2 - 300 + 330);
-	menuOp[2].setSize(Vector2f(210, 70));
-	menuOp[2].setFillColor(UI.Sections);
-	menuOp[3].setPosition(_WIDTH_ / 2 - 60, _HEIGHT_ / 2 + 190);
-	menuOp[3].setSize(Vector2f(120, 60));
-	menuOp[3].setFillColor(UI.Sections);
+	// Options
+	if (CurrentMode() == menu)
+	{
+		// Buttons
+		// Settings Button
+		menuOp[0].setPosition(_WIDTH_ / 2 - 105, _HEIGHT_ / 2 - 300 + 70);
+		menuOp[0].setSize(Vector2f(210, 70));
+		menuOp[0].setFillColor(UI.Sections);
+		// SFX volume Button
+		menuOp[1].setPosition(_WIDTH_ / 2 - 105, _HEIGHT_ / 2 - 300 + 200);
+		menuOp[1].setSize(Vector2f(210, 70));
+		menuOp[1].setFillColor(UI.Sections);
+		// Music volume Button
+		menuOp[2].setPosition(_WIDTH_ / 2 - 105, _HEIGHT_ / 2 - 300 + 330);
+		menuOp[2].setSize(Vector2f(210, 70));
+		menuOp[2].setFillColor(UI.Sections);
+		// Close Button
+		menuOp[3].setPosition(_WIDTH_ / 2 - 60, _HEIGHT_ / 2 + 190);
+		menuOp[3].setSize(Vector2f(120, 60));
+		menuOp[3].setFillColor(UI.Sections);
 
-	menuOpT[0].setFont(font);
-	menuOpT[0].setString("Settings");
-	menuOpT[0].setCharacterSize(30);
-	menuOpT[0].setFillColor(UI.TextColor);
-	menuOpT[0].setPosition((_WIDTH_ - menuOpT[0].getLocalBounds().width) / 2, _HEIGHT_ / 2 - 300 + 90);
-	menuOpT[1].setFont(font);
-	menuOpT[1].setString("Toggle SFX");
-	menuOpT[1].setCharacterSize(30);
-	menuOpT[1].setFillColor(UI.TextColor);
-	menuOpT[1].setPosition((_WIDTH_ - menuOpT[1].getLocalBounds().width) / 2, _HEIGHT_ / 2 - 300 + 220);
-	menuOpT[2].setFont(font);
-	menuOpT[2].setString("Toggle Music");
-	menuOpT[2].setCharacterSize(30);
-	menuOpT[2].setFillColor(UI.TextColor);
-	menuOpT[2].setPosition((_WIDTH_ - menuOpT[2].getLocalBounds().width) / 2, _HEIGHT_ / 2 - 300 + 350);
-	menuOpT[3].setFont(font);
-	menuOpT[3].setString("Exit");
-	menuOpT[3].setCharacterSize(30);
-	menuOpT[3].setFillColor(UI.TextColor);
-	menuOpT[3].setPosition((_WIDTH_ - menuOpT[3].getLocalBounds().width) / 2, _HEIGHT_ / 2 + 205);
+		// Text
+		// Settings
+		menuOpT[0].setFont(font);
+		menuOpT[0].setString("Settings");
+		menuOpT[0].setCharacterSize(30);
+		menuOpT[0].setFillColor(UI.TextColor);
+		menuOpT[0].setPosition((_WIDTH_ - menuOpT[0].getLocalBounds().width) / 2, _HEIGHT_ / 2 - 300 + 90);
+		menuOpT[1].setFont(font);
+		// Toggle SFX
+		menuOpT[1].setString("Toggle SFX");
+		menuOpT[1].setCharacterSize(30);
+		menuOpT[1].setFillColor(UI.TextColor);
+		menuOpT[1].setPosition((_WIDTH_ - menuOpT[1].getLocalBounds().width) / 2, _HEIGHT_ / 2 - 300 + 220);
+		menuOpT[2].setFont(font);
+		// Toggle Music
+		menuOpT[2].setString("Toggle Music");
+		menuOpT[2].setCharacterSize(30);
+		menuOpT[2].setFillColor(UI.TextColor);
+		menuOpT[2].setPosition((_WIDTH_ - menuOpT[2].getLocalBounds().width) / 2, _HEIGHT_ / 2 - 300 + 350);
+		menuOpT[3].setFont(font);
+		// Close
+		menuOpT[3].setString("Close");
+		menuOpT[3].setCharacterSize(30);
+		menuOpT[3].setFillColor(UI.TextColor);
+		menuOpT[3].setPosition((_WIDTH_ - menuOpT[3].getLocalBounds().width) / 2, _HEIGHT_ / 2 + 205);
+	}
+	// Results Menu
+	else if (CurrentMode() == endgame)
+	{
+		// Winning team text
+		endgameTxt.setFont(font);
+		endgameTxt.setCharacterSize(50);
+
+		// Text Underline
+		endgameUnderline.setPosition(_WIDTH_ / 2 - 170, _HEIGHT_ / 2 - 150 + 80);
+		endgameUnderline.setSize(Vector2f(340, 4));
+
+		// Exit Button
+		menuOp[3].setPosition(_WIDTH_ / 2 - 60, _HEIGHT_ / 2 + 40);
+		menuOp[3].setSize(Vector2f(120, 60));
+		menuOp[3].setFillColor(UI.Sections);
+
+		// Exit
+		menuOpT[3].setFont(font);
+		menuOpT[3].setString("Exit");
+		menuOpT[3].setCharacterSize(30);
+		menuOpT[3].setFillColor(UI.TextColor);
+		menuOpT[3].setPosition((_WIDTH_ - menuOpT[3].getLocalBounds().width) / 2, _HEIGHT_ / 2 + 50);
+	}
 
 	MenuSelected = -1;
 }
@@ -211,11 +259,14 @@ void GameSystem::OpenMenu()
 {
 	PrepMenu();
 	UI_s.open_menu.play();
-	while (CurrentMode() == menu)
+	while (CurrentMode() == menu && game_window->isOpen())
 	{
 		sf::Event event;
 		while (game_window->pollEvent(event))
 		{
+			// Window is closed
+			if (event.type == Event::Closed)
+				game_window->close();
 			if (Mouse::isButtonPressed(Mouse::Left))
 			{
 				if (OpenedMenu())
@@ -463,7 +514,7 @@ void GameSystem::PrepPhase()
 	PrepComputer();
 
 	grid[0].resetPlacements();
-	while (UI.mode == prep)
+	while (UI.mode == prep && game_window->isOpen())
 	{
 		sf::Event event;
 		while (game_window->pollEvent(event))
@@ -566,8 +617,7 @@ void GameSystem::PrepPhase()
 				if (event.key.code == sf::Keyboard::I)
 				{
 					setMode(menu);
-				}
-				
+				}			
 			}
 			
 		}
@@ -578,7 +628,7 @@ void GameSystem::PrepPhase()
 		game_window->display();
 		
 	}
-	if (mode == game)
+	if (CurrentMode() == game)
 		GamePhase();
 }
 
@@ -603,7 +653,7 @@ void GameSystem::PrepComputer()
 	}*/
 }
 
-void GameSystem::UpdateGrid(Color& c, vector<Vector2i>& hitbox, int team)
+void GameSystem::UpdateGrid(Color& c, vector<Vector2i>& hitbox, TeamOpt team)
 {
 	grid[team].ColorShip(c, hitbox);
 }
@@ -632,7 +682,7 @@ void GameSystem::GamePhase()
 	computer->setEnemyInfo(player);
 
 	bool turn = true;
-	while (UI.mode == game && CheckWinner() == 0)
+	while (UI.mode == game && CheckWinner() == 0 && game_window->isOpen())
 	{
 		Vector2i pos_comp;
 		if (!turn)
@@ -673,11 +723,9 @@ void GameSystem::GamePhase()
 					{
 						if (computer->getShip(i)->getHealth() == dead)
 						{
-							UpdateGrid(UI.HitColor, computer->getShip(i)->getHitbox(), 1);
+							UpdateGrid(UI.HitColor, computer->getShip(i)->getHitbox(), AIplayer);
 						}
 					}
-					if (CheckWinner() == -1)	//Player Won
-						break;
 					turn = !turn;
 				}
 				while (Mouse::isButtonPressed(Mouse::Left))
@@ -705,16 +753,16 @@ void GameSystem::GamePhase()
 		draw();
 		game_window->display();
 	}
-	if (CurrentMode() != closed)
+
+	if (CheckWinner() == -1)	// Player Won
 	{
-		while (!Mouse::isButtonPressed(Mouse::Left))
-		{
-
-		}
-		while (Mouse::isButtonPressed(Mouse::Left))
-		{
-
-		}
+		setMode(endgame);
+		FinishMenu(player1);
+	}
+	else if (CheckWinner() == 1)		// Computer Won
+	{
+		setMode(endgame);
+		FinishMenu(AIplayer);
 	}
 }
 
@@ -725,7 +773,7 @@ void GameSystem::GameComputer(Vector2i& pos)
 	{
 		printf("Finishing Target (%d, %d)\n", pos2.x, pos2.y);
 		if (!player->ShotTracker(pos2))
-			cout << "YSTAAAAAAAA#\n";
+			cout << "!!TRACKING SYSTEM FAILED!!\n";
 		grid[0].HitGrid(pos2);
 		computer->updateEnemyPlacements();
 	}
@@ -748,8 +796,96 @@ void GameSystem::GameComputer(Vector2i& pos)
 	{
 		if (player->getShip(i)->getHealth() == dead)
 		{
-			UpdateGrid(UI.HitColor, player->getShip(i)->getHitbox(), 0);
+			UpdateGrid(UI.HitColor, player->getShip(i)->getHitbox(), player1);
 		}
+	}
+}
+
+void GameSystem::FinishMenu(TeamOpt team)
+{
+	// Menu
+	PrepMenu();
+
+	// Player won
+	if (team == player1)
+	{
+		endgameTxt.setString("You Won");
+		endgameTxt.setPosition((_WIDTH_ - endgameTxt.getLocalBounds().width) / 2, _HEIGHT_ / 2 - 150 + 20);
+		endgameTxt.setFillColor(UI.ShipColor);
+		endgameUnderline.setFillColor(UI.ShipColor);
+	}
+	// Computer lost
+	else
+	{
+		endgameTxt.setString("You Lost");
+		endgameTxt.setPosition((_WIDTH_ - endgameTxt.getLocalBounds().width) / 2, _HEIGHT_ / 2 - 150 + 20);
+		endgameTxt.setFillColor(UI.HitColor);
+		endgameUnderline.setFillColor(UI.HitColor);
+	}
+
+	while (CurrentMode() == endgame && game_window->isOpen())
+	{
+		sf::Event event;
+		while (game_window->pollEvent(event))
+		{
+			// Window is closed
+			if (event.type == Event::Closed)
+				game_window->close();
+			if (event.type == Event::KeyPressed)
+			{
+				// The escape key was pressed
+				if (event.key.code == sf::Keyboard::Escape)
+				{
+					UI_s.select.play();
+					setMode(closed);
+				}
+				else if (event.key.code == sf::Keyboard::Enter)
+				{
+					UI_s.select.play();
+					setMode(closed);
+				}
+			}
+
+				Vector2i pos = Mouse::getPosition(*game_window);
+			//Mouse Input
+			if (!Mouse::isButtonPressed(Mouse::Left))
+			{
+
+				// Hovered over Exit button
+				if (pos.x > _WIDTH_ / 2 - 60 && pos.x < _WIDTH_ / 2 + 60 && pos.y > _HEIGHT_ / 2 + 40 && pos.y < _HEIGHT_ / 2 + 100)
+				{
+					if (MenuSelected == -1)			// Prevents repetition
+					{
+						menuOpT[3].setFillColor(UI.Player_theme);
+						UI_s.hover.play();
+						MenuSelected = 3;
+					}
+				}
+				else if (menuOpT[3].getFillColor() == UI.Player_theme)		// Prevents repetition
+				{
+					menuOpT[3].setFillColor(UI.TextColor);
+					MenuSelected = -1;
+				}	
+			}
+			else if (Mouse::isButtonPressed(Mouse::Left))
+			{
+				if (pos.x > _WIDTH_ / 2 - 60 && pos.x < _WIDTH_ / 2 + 60 && pos.y > _HEIGHT_ / 2 + 40 && pos.y < _HEIGHT_ / 2 + 100)
+				{
+					UI_s.hover.stop();
+					UI_s.select.play();
+					setMode(closed);
+				}
+			}
+		}
+
+		game_window->clear();
+		draw();
+		game_window->draw(popup);
+		game_window->draw(endgameTxt);
+		game_window->draw(endgameUnderline);
+		game_window->draw(menuOp[3]);
+		game_window->draw(menuOpT[3]);
+		game_window->display();
 	}
 }
 

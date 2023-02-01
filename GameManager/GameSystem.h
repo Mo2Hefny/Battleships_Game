@@ -24,9 +24,9 @@ class GameSystem
 
 	//UI
 	Font font;
-	Text Players_name[2], prep_ships, status_bar_msg, menuOpT[4];
+	Text Players_name[2], prep_ships, status_bar_msg, menuOpT[4], endgameTxt;
 	Texture PBackground_img, carrierT, battleshipT, cruiserT, subT, warshipT, status_barT, menu_dropT;
-	RectangleShape PBackground, Sections[3], Underline[3], popup, menuOp[4];
+	RectangleShape PBackground, Sections[3], Underline[3], popup, menuOp[4], endgameUnderline;
 	Sprite carrier, battleship, cruiser, sub, warship, status_bar, menu_drop;
 
 public:
@@ -41,7 +41,7 @@ public:
 	void PrepPhase();
 	void PrepComputer();
 	void SelectedShip();
-	void UpdateGrid(Color& , vector<Vector2i>&, int = 0);
+	void UpdateGrid(Color& , vector<Vector2i>&, TeamOpt = player1);
 
 	//GamePlay
 	void GamePhase();
@@ -52,6 +52,7 @@ public:
 	//Menu
 	bool OpenedMenu();
 	void OpenMenu();
+	void FinishMenu(TeamOpt);
 	void MoveUp();
 	void MoveDown();
 	void PrepMenu();
