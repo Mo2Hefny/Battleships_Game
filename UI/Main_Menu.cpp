@@ -174,9 +174,6 @@ int MainMenu::OnText() const
 {
 	Vector2i pos = Mouse::getPosition(*Menu);
 
-	// Terminal Updates
-	printf("Clicked at position: (%d, %d)\n", pos.x, pos.y);
-
 	// Clicked Play
 	if (pos.x - item_pos[0].x < width[0] && pos.x - item_pos[0].x > 0 && pos.y - item_pos[0].y < height[0] && pos.y - item_pos[0].y > 0)
 	{
