@@ -153,7 +153,6 @@
     <ClInclude Include="Characters\Computer.h" />
     <ClInclude Include="Characters\Player.h" />
     <ClInclude Include="DEFS.h" />
-    <ClInclude Include="Headers.h" />
     <ClInclude Include="Ships\Battleship.h" />
     <ClInclude Include="Ships\Carrier.h" />
     <ClInclude Include="Ships\Cruiser.h" />

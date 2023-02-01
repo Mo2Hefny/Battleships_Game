@@ -35,6 +35,8 @@ public:
 	void Switch();
 	void Load();
 	int OnText() const;
+
+	// getters
 	int CurrentSelected() const { return MainMenuSelected;  }
 };
 

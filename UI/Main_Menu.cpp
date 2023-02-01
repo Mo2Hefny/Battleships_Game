@@ -279,6 +279,10 @@ void MainMenu::Execute()
 			{
 				if (OnText() != -1)
 				{
+					// Terminal Updates
+					Vector2i pos = Mouse::getPosition(*Menu);
+					printf("Clicked at position: (%d, %d)\n", pos.x, pos.y);
+
 					UI_s.select.play();		//Play select sound
 					Switch();
 				}
