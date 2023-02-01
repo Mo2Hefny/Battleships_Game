@@ -3,11 +3,11 @@
 Player::Player(RenderWindow& window, Grid* grid) : Character(window, grid)
 {
 	selected_ship = NULL;
-	player_ships[0] = new Carrier(window);
-	player_ships[1] = new Battleship(window);
-	player_ships[2] = new Cruiser(window);
-	player_ships[3] = new Submarine(window);
-	player_ships[4] = new Warship(window);
+	player_ships[0] = new Carrier();
+	player_ships[1] = new Battleship();
+	player_ships[2] = new Cruiser();
+	player_ships[3] = new Submarine();
+	player_ships[4] = new Warship();
 }
 
 Player::~Player()
@@ -16,12 +16,6 @@ Player::~Player()
 	{
 		delete player_ships[i];
 	}
-}
-
-void Player::draw()
-{
-	game_window->draw(player_ships[0]->getSprite());
-	//game_window->display();
 }
 
 void Player::setSelected(char c)

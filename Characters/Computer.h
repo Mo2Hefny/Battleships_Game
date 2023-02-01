@@ -20,7 +20,6 @@ class Computer : public Character
 public:
 	Computer(RenderWindow& window, Grid* grid);
 	~Computer();
-	void draw();
 
 	//Preparation Phase
 	void PrepPhase();

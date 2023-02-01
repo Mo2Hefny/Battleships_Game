@@ -9,7 +9,6 @@ class Player : public Character
 public:
 	Player(RenderWindow& window, Grid* grid);
 	~Player();
-	void draw();
 
 	//getters
 	Ship* getSelected() const { return selected_ship; }

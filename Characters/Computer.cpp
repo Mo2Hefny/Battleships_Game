@@ -3,11 +3,11 @@
 Computer::Computer(RenderWindow& window, Grid* grid) : Character(window, grid)
 {
 	srand(time(0));
-	player_ships[0] = new Carrier(window);
-	player_ships[1] = new Battleship(window);
-	player_ships[2] = new Cruiser(window);
-	player_ships[3] = new Submarine(window);
-	player_ships[4] = new Warship(window);
+	player_ships[0] = new Carrier();
+	player_ships[1] = new Battleship();
+	player_ships[2] = new Cruiser();
+	player_ships[3] = new Submarine();
+	player_ships[4] = new Warship();
 	north = east = south = west = spotted = total_spotted = 0;
 
 	//initialize positions for AI
@@ -24,11 +24,6 @@ Computer::~Computer()
 	{
 		delete player_ships[i];
 	}
-}
-
-void Computer::draw()
-{
-
 }
 
 //======================================================================================//
@@ -193,7 +188,8 @@ bool Computer::FinishShips(Vector2i& pos)
 	{
 		spotted++;
 		north = east = south = west = 0;
-		FinishShips(pos);
+		if (spotted < 5)
+			FinishShips(pos);
 	}
 	else
 	{
@@ -209,16 +205,67 @@ bool Computer::FinishShips(Vector2i& pos)
 		else
 		{
 			p = path;
-			if (north == 1)
+
+			// Moves north
+			if (north == 1 && path.x > 0)
 			{
 				path.x--;
 			}
-			else if (south == 1)
+			else if (north == 1 && path.x <= 0)		// Changes direction if hit borber.
+			{
+				north = -1;
+				if (south == 0)
+				{
+					south = 1;
+					path = mainpoint;
+					path.x++;
+				}
+			}
+			// Moves south
+			else if (south == 1 && path.x < 9)
+			{
 				path.x++;
-			else if (east == 1)
+			}
+			else if (south == 1 && path.x >= 9)		// Changes direction if hit borber.
+			{
+				south = -1;
+				if (north == 0)
+				{
+					north = 1;
+					path = mainpoint;
+					path.x--;
+				}
+			}
+			// Moves east
+			else if (east == 1 && path.y < 9)
+			{
 				path.y++;
-			else if (west == 1)
+			}
+			else if (east == 1 && path.y >= 9)		// Changes direction if hit borber.
+			{
+				east = -1;
+				if (west == 0)
+				{
+					west = 1;
+					path = mainpoint;
+					path.y--;
+				}
+			}
+			// Moves west
+			else if (west == 1 && path.y > 0)
+			{
 				path.y--;
+			}
+			else if (west == 1 && path.y <= 0)		// Changes direction if hit borber.
+			{
+				west = -1;
+				if (east == 0)
+				{
+					east = 1;
+					path = mainpoint;
+					path.y++;
+				}
+			}
 		}
 		while (!TestHitPath(path))
 		{
