@@ -22,11 +22,19 @@ int VOLUME = 30;
 
 using namespace sf;
 
+enum TeamOpt
+{
+	player1,
+
+	AIplayer
+};
+
 enum PlayState
 {
 	menu,
 	prep,
 	game,
+	endgame,
 	closed
 };
 
