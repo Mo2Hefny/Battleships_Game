@@ -1,15 +1,15 @@
 #include "Ship.h"
 
-Ship::Ship(RenderWindow& window)
+Ship::Ship()
 {
-	game_window = &window;
-	position.x = UI.player1->x;
-	position.y = UI.player1->y;
 	rotation = horizontal;
 	row = col = 0;
 	health = alive;
 }
 
+/*
+* PrepPhase - Deploys the ship on the grid in its current position.
+*/
 void Ship::PrepPhase()
 {
 	int r = row;
@@ -33,13 +33,17 @@ void Ship::PrepPhase()
 	
 }
 
+/*
+* MoveUp - Moves the ship upwards in the prepration phase.
+*/
 void Ship::MoveUp()
 {
+	// Horizontal
 	if (getRotation() == horizontal)
 	{
-		if (row - 1 < 0)
+		if (row - 1 < 0)		//Exceeding Grid borders
 		{
-			UI_s.barrier.play();
+			UI_s.barrier.play();		// Play movement error sound
 			return;
 		}
 		int r = --row;
@@ -48,11 +52,12 @@ void Ship::MoveUp()
 			hitbox[i].x = r;
 		}
 	}
+	// Vetrical
 	else
 	{
-		if (row - 1 < 0)
+		if (row - 1 < 0)		//Exceeding Grid borders
 		{
-			UI_s.barrier.play();
+			UI_s.barrier.play();		// Play movement error sound
 			return;
 		}
 		int r = --row;
@@ -61,16 +66,21 @@ void Ship::MoveUp()
 			hitbox[i].x = r++;
 		}
 	}
-	UI_s.move.play();
+
+	UI_s.move.play();		// Play moving sound
 }
 
+/*
+* MoveDown - Moves the ship downwards in the prepration phase.
+*/
 void Ship::MoveDown()
 {
+	// Horizontal
 	if (getRotation() == horizontal)
 	{
-		if (row + 1 > 9) 
+		if (row + 1 > 9)		//Exceeding Grid borders
 		{
-			UI_s.barrier.play();
+			UI_s.barrier.play();		// Play movement error sound
 			return;
 		}
 		int r = ++row;
@@ -79,11 +89,12 @@ void Ship::MoveDown()
 			hitbox[i].x = r;
 		}
 	}
+	// Vertical
 	else
 	{
-		if (row + hitbox.size() > 9) 
+		if (row + hitbox.size() > 9)		//Exceeding Grid borders
 		{
-			UI_s.barrier.play();
+			UI_s.barrier.play();		// Play movement error sound
 			return;
 		}
 		int r = ++row;
@@ -92,16 +103,21 @@ void Ship::MoveDown()
 			hitbox[i].x = r++;
 		}
 	}
-	UI_s.move.play();
+
+	UI_s.move.play();		// Play moving sound
 }
 
+/*
+* MoveLeft - Moves the ship to the left in the prepration phase.
+*/
 void Ship::MoveLeft()
 {
+	// Horizontal
 	if (getRotation() == horizontal)
 	{
-		if (col - 1 < 0) 
+		if (col - 1 < 0)		//Exceeding Grid borders
 		{
-			UI_s.barrier.play();
+			UI_s.barrier.play();		// Play movement error sound
 			return;
 		}
 		int c = --col;
@@ -110,11 +126,12 @@ void Ship::MoveLeft()
 			hitbox[i].y = c++;
 		}
 	}
+	// Vertical
 	else
 	{
-		if (col - 1 < 0) 
+		if (col - 1 < 0)		//Exceeding Grid borders
 		{
-			UI_s.barrier.play();
+			UI_s.barrier.play();		// Play movement error sound
 			return;
 		}
 		int c = --col;
@@ -123,16 +140,21 @@ void Ship::MoveLeft()
 			hitbox[i].y = c;
 		}
 	}
-	UI_s.move.play();
+
+	UI_s.move.play();		// Play moving sound
 }
 
+/*
+* MoveRight - Moves the ship to the right in the prepration phase.
+*/
 void Ship::MoveRight()
 {
+	// Horizontal
 	if (getRotation() == horizontal)
 	{
-		if (col + hitbox.size() > 9) 
+		if (col + hitbox.size() > 9)		//Exceeding Grid borders
 		{
-			UI_s.barrier.play();
+			UI_s.barrier.play();		// Play movement error sound
 			return;
 		}
 		int c = ++col;
@@ -141,11 +163,12 @@ void Ship::MoveRight()
 			hitbox[i].y = c++;
 		}
 	}
+	// Vertical
 	else
 	{
-		if (col + 1 > 9) 
+		if (col + 1 > 9)		//Exceeding Grid borders
 		{
-			UI_s.barrier.play();
+			UI_s.barrier.play();		// Play movement error sound
 			return;
 		}
 		int c = ++col;
@@ -154,18 +177,24 @@ void Ship::MoveRight()
 			hitbox[i].y = c;
 		}
 	}
-	UI_s.move.play();
+
+	UI_s.move.play();		// Play moving sound
 }
 
+/*
+* Rotate - Rotates the ship in the prepration phase.
+*/
 void Ship::Rotate()
 {
 	int c = hitbox[0].y;
 	int r = hitbox[0].x;
+
+	// Horizontal to Vertical
 	if (getRotation() == horizontal)
 	{
-		if (r + hitbox.size() > 10) 
+		if (r + hitbox.size() > 10)			//Rotated vertical ship will exceed the borders
 		{
-			UI_s.barrier.play();
+			UI_s.barrier.play();		// Play rotation error sound
 			return;
 		}
 		setRotation(vertical);
@@ -175,11 +204,12 @@ void Ship::Rotate()
 			hitbox[i].y = c;
 		}
 	}
+	// Vertical to Horizontal
 	else
 	{
-		if (c + hitbox.size() > 10) 
+		if (c + hitbox.size() > 10)			//Rotated horizontal ship will exceed the borders
 		{
-			UI_s.barrier.play();
+			UI_s.barrier.play();		// Play rotation error sound
 			return;
 		}
 		setRotation(horizontal);
@@ -189,15 +219,25 @@ void Ship::Rotate()
 			hitbox[i].y = ++c;
 		}
 	}
-	UI_s.rotate.play();
+
+	UI_s.rotate.play();		// Play rotating sound
 }
 
+/*
+* setRow - Updates the ship's starting row position.
+* 
+* @param r - the value of the new row.
+* 
+* @return true on success, false otherwise.
+*/
 bool Ship::setRow(int r)
 {
-	if (getRotation() == vertical && (r + hitbox.size() > 10 || r < 0))
+	if (getRotation() == vertical && (r + hitbox.size() > 10 || r < 0))			//Exceeding Grid borders
 		return false;
-	else if (getRotation() == horizontal && (r  > 10 || r < 0))
+	else if (getRotation() == horizontal && (r  > 10 || r < 0))			//Exceeding Grid borders
 		return false;
+
+	// Updates ship's row
 	row = r;
 	if (getRotation() == horizontal)
 		for (int i = 0; i < hitbox.size(); i++)
@@ -208,12 +248,21 @@ bool Ship::setRow(int r)
 	return true;
 }
 
+/*
+* setColumn - Updates the ship's starting column position.
+* 
+* @param c - the value of the new column.
+* 
+* @return true on success, false otherwise.
+*/
 bool Ship::setColumn(int c)
 {
-	if (getRotation() == horizontal && (c + hitbox.size() > 10 || c < 0))
+	if (getRotation() == horizontal && (c + hitbox.size() > 10 || c < 0))		//Exceeding Grid borders
 		return false;
-	else if (getRotation() == vertical && (c > 10 || c < 0))
+	else if (getRotation() == vertical && (c > 10 || c < 0))		//Exceeding Grid borders
 		return false;
+
+	// Updates ship's column
 	col = c;
 	if (getRotation() == horizontal)
 		for (int i = 0; i < hitbox.size(); i++)

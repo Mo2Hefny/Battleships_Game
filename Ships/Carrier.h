@@ -5,15 +5,8 @@
 
 class Carrier : public Ship
 {
-	Texture img;
-	double width, height;
-	
 public:
-	Carrier(RenderWindow&);
-
-	//setters
-
-	//getters
+	Carrier();
 };
 
 #endif

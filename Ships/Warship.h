@@ -5,15 +5,8 @@
 
 class Warship : public Ship
 {
-	Texture img;
-	double width, height;
-
 public:
-	Warship(RenderWindow&);
-
-	//setters
-
-	//getters
+	Warship();
 };
 
 #endif

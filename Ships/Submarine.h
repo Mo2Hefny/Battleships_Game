@@ -5,15 +5,8 @@
 
 class Submarine : public Ship
 {
-	Texture img;
-	double width, height;
-
 public:
-	Submarine(RenderWindow&);
-
-	//setters
-
-	//getters
+	Submarine();
 };
 
 #endif

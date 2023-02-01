@@ -5,15 +5,8 @@
 
 class Cruiser : public Ship
 {
-	Texture img;
-	double width, height;
-
 public:
-	Cruiser(RenderWindow&);
-
-	//setters
-
-	//getters
+	Cruiser();
 };
 
 #endif

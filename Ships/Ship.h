@@ -10,20 +10,16 @@ using namespace sf;
 
 class Ship
 {
-	RenderWindow* game_window;
-	Vector2f position;
 	Direction rotation;
-	Sprite sprite;
 	PlayerState health;
+	vector<Vector2i> hitbox;
 	int row, col;
 
-protected:
-	vector<Vector2i> hitbox;
 public:
-	Ship(RenderWindow&);
+	Ship();
 	virtual ~Ship() {}
 
-	//Preparation phase movement
+	// Preparation phase movement
 	virtual void PrepPhase();
 	virtual void MoveUp();
 	virtual void MoveDown();
@@ -31,16 +27,14 @@ public:
 	virtual void MoveLeft();
 	void Rotate();
 
-	//setters
-	void setPosition(Vector2f pos) { position = pos; }
+	// setters
+	void AddToHitbox(Vector2i h) { hitbox.push_back(h); }
 	void setRotation(Direction d) { rotation = d; }
 	void setHealth(PlayerState mode) { health = mode; }
 	bool setRow(int r);
 	bool setColumn(int c);
 
-	//getters
-	Sprite getSprite() const { return sprite; }
-	RenderWindow* getWindow() const { return game_window; }
+	// getters
 	Direction getRotation() const { return rotation; }
 	PlayerState getHealth() const { return health; }
 	virtual vector<Vector2i>& getHitbox() { return hitbox; }

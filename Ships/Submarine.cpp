@@ -1,13 +1,9 @@
 #include "Submarine.h"
 
-Submarine::Submarine(RenderWindow& window) : Ship(window)
+Submarine::Submarine()
 {
-	width = height = 0.2;
-	img.loadFromFile(".\\Images\\Submarine.png");
-	getSprite().setTexture(img);
-	getSprite().setScale(width, height);
-
-	hitbox.push_back(Vector2i(0, 0));
-	hitbox.push_back(Vector2i(0, 1));
-	hitbox.push_back(Vector2i(0, 2));
+	// Setup hitbox
+	AddToHitbox(Vector2i(0, 0));
+	AddToHitbox(Vector2i(0, 1));
+	AddToHitbox(Vector2i(0, 2));
 }
