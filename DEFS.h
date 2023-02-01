@@ -10,7 +10,7 @@
 
 #define	_WIDTH_	1600	
 #define _HEIGHT_ 900
-#define _WAIT_ 1500
+#define _WAIT_ 1000
 
 __declspec(selectany) //This line to prevent "redefinition error"
 
