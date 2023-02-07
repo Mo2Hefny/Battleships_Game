@@ -33,7 +33,7 @@ Once a player has found and destroyed all 5 enemy ships, the game ends.
 
 #### AI Strategies
 The current implementations of various strategies to challenge the player:
-- **Random Targeting**: shoots at a random spot till it finds an enemy ship, ***BUT*** it won't target spots which can't hold the smallest still living ship.
+- **Random Targeting**: shoots at a random spot till it finds an enemy ship, ***BUT*** it won't target spots that can't hold the smallest still living ship.
 
 ![hit_target](https://user-images.githubusercontent.com/111001850/216166236-4648ce6f-52ba-402f-9c6a-37cb89904a63.png)
 
@@ -41,7 +41,7 @@ The current implementations of various strategies to challenge the player:
 
 ![finish_ship](https://user-images.githubusercontent.com/111001850/216166124-800a5a91-6214-4ff0-b108-ab51ac2a61ef.png)
 
-- **Checking Other Ships**: checks if there is an another ship was hit while destroying the found ship and finishing it.
+- **Checking Other Ships**: checks if another ship was hit while destroying the found ship and finishing it.
 
 ![hit_path](https://user-images.githubusercontent.com/111001850/216166535-b3721f14-6269-4f08-80e7-075a2bb374a9.png)
 
