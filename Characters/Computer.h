@@ -33,6 +33,7 @@ public:
 	bool CheckShips(Vector2i&);
 	bool CheckArea(Vector2i&, int);
 	void updateEnemyPlacements();
+	void updateEnemyShips();
 	bool FinishShips(Vector2i&);
 	bool TestHitPath(Vector2i&);
 	void MoveInPath(Vector2i&);
@@ -43,7 +44,7 @@ public:
 	//setters
 	void setEnemyInfo(Player*);
 	void setHitPath(Vector2i);
-	void setInitialHit(Vector2i pos) { initial_hit[total_spotted++] = pos; }
+	void setInitialHit(Vector2i pos);
 };
 
 

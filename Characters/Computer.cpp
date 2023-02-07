@@ -16,6 +16,7 @@ Computer::Computer(RenderWindow& window, Grid* grid) : Character(window, grid)
 		initial_hit[i].x = -1;
 	}
 	
+	spotted = -1;
 }
 
 Computer::~Computer()
@@ -110,31 +111,42 @@ void Computer::updateEnemyPlacements()
 	}
 }
 
+void Computer::updateEnemyShips()
+{
+	for (int i = 0; i < 5; i++)
+	{
+		if (enemy_ships[i]->getHealth() == dead)
+		{
+			initial_hit[i].x = -1;
+		}
+	}
+}
+
 bool Computer::CheckShips(Vector2i& pos)
 {
 	if (CheckArea(pos, 5) && enemy_ships[0]->getHealth() == alive)
 	{
-		cout << "Can store Carrier\n";
+		//cout << "Can store Carrier\n";
 		return true;
 	}
 	if (CheckArea(pos, 4) && enemy_ships[1]->getHealth() == alive)
 	{
-		cout << "Can store Battlefield\n";
+		//cout << "Can store Battlefield\n";
 		return true;
 	}
 	if (CheckArea(pos, 3) && enemy_ships[2]->getHealth() == alive)
 	{
-		cout << "Can store Cruiser\n";
+		//cout << "Can store Cruiser\n";
 		return true;
 	}
 	if (CheckArea(pos, 3) && enemy_ships[3]->getHealth() == alive)
 	{
-		cout << "Can store Sub\n";
+		//cout << "Can store Sub\n";
 		return true;
 	}
 	if (CheckArea(pos, 2) && enemy_ships[4]->getHealth() == alive)
 	{
-		cout << "Can store Warship\n";
+		//cout << "Can store Warship\n";
 		return true;
 	}
 	return false;
@@ -148,13 +160,15 @@ bool Computer::CheckArea(Vector2i& pos, int size)
 	for (i = 0; i < 10; i++)
 	{
 		n++;
+		int range = enemy_placement[x][i];
 		if (i == y)
 			passed = true;
 		if (passed && n > size)
 			return true;
-		if (enemy_placement[x][i] == -1 && !passed)
+		
+		if ((range == -1 || range >= 44 && range <= 48 || range >= 64 && range <= 67 || range >= 84 && range <= 86 || range >= 104 && range <= 106 || range >= 124 && range <= 125) && !passed)
 			n = 0;
-		else if (enemy_placement[x][i] == -1 && passed && n <= size)
+		else if ((range == -1 || range >= 44 && range <= 48 || range >= 64 && range <= 67 || range >= 84 && range <= 86 || range >= 104 && range <= 106 || range >= 124 && range <= 125) && passed && n <= size)
 			break;
 	}
 	n = 0;
@@ -162,13 +176,14 @@ bool Computer::CheckArea(Vector2i& pos, int size)
 	for (i = 0; i < 10; i++)
 	{
 		n++;
+		int range = enemy_placement[i][y];
 		if (i == x)
 			passed = true;
 		if (passed && n > size)
 			return true;
-		if (enemy_placement[i][y] == -1 && !passed)
+		if ((range == -1 || range >= 44 && range <= 48 || range >= 64 && range <= 67 || range >= 84 && range <= 86 || range >= 104 && range <= 106 || range >= 124 && range <= 125) && !passed)
 			n = 0;
-		if (enemy_placement[i][y] == -1 && passed && n <= size)
+		if ((range == -1 || range >= 44 && range <= 48 || range >= 64 && range <= 67 || range >= 84 && range <= 86 || range >= 104 && range <= 106 || range >= 124 && range <= 125) && passed && n <= size)
 			return false;
 		
 	}
@@ -177,22 +192,36 @@ bool Computer::CheckArea(Vector2i& pos, int size)
 
 bool Computer::FinishShips(Vector2i& pos)
 {
-	Vector2i mainpoint = getInitialHit(spotted);
-	Vector2i p;
 
-	if (getInitialHit(spotted).x == -1)
+	if (spotted == -1)
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			if (initial_hit[i].x != -1)
+			{
+				cout << "Found Ship.\n";
+				spotted = i;
+				break;
+			}
+		}
+	}
+	if (spotted == -1)
 	{
 		return false;
 	}
-	if (north == -1 && south == -1 && east == -1 && west == -1 || player->getDeadCount() > spotted)
+
+	Vector2i mainpoint = getInitialHit(spotted);
+	Vector2i p;
+
+	if (north == -1 && south == -1 && east == -1 && west == -1 || initial_hit[spotted].x == -1)
 	{
-		spotted++;
+		spotted = -1;
 		north = east = south = west = 0;
-		if (spotted < 5)
-			FinishShips(pos);
+		FinishShips(pos);
 	}
 	else
 	{
+	
 		if (north != 1 && south != 1 && east != 1 && west != 1)
 		{
 			do
@@ -407,7 +436,6 @@ void Computer::MoveInPath(Vector2i& pos)
 			else
 			{
 				setInitialHit(path);
-				north = -1;
 				return;
 			}
 		}
@@ -433,7 +461,6 @@ void Computer::MoveInPath(Vector2i& pos)
 			else
 			{
 				setInitialHit(path);
-				south = -1;
 				return;
 			}
 		}
@@ -459,7 +486,6 @@ void Computer::MoveInPath(Vector2i& pos)
 			else
 			{
 				setInitialHit(path);
-				east = -1;
 				return;
 			}
 		}
@@ -485,7 +511,6 @@ void Computer::MoveInPath(Vector2i& pos)
 			else
 			{
 				setInitialHit(path);
-				west = -1;
 				return;
 			}
 		}
@@ -508,4 +533,47 @@ void Computer::setEnemyInfo(Player* p)
 	{
 		enemy_ships[i] = p->getShip(i);
 	}
+}
+
+void Computer::setInitialHit(Vector2i pos)
+{
+	int x = pos.x, y = pos.y;
+
+	// Invalid input
+	if (enemy_placement[x][y] <= 0)
+	{
+		cout << "Error\n";
+		exit(1);
+	}
+	// Carrier Spotted
+	else if (enemy_placement[x][y] <= 60 && enemy_ships[0]->getHealth() == alive)
+	{
+		//cout << "Carrier spotted!\n";
+		initial_hit[0] = pos;
+	}
+	// Battleship Spotted
+	else if (enemy_placement[x][y] <= 80 && enemy_ships[1]->getHealth() == alive)
+	{
+		//cout << "Battleship spotted!\n";
+		initial_hit[1] = pos;
+	}
+	// Cruiser Spotted
+	else if (enemy_placement[x][y] <= 100 && enemy_ships[2]->getHealth() == alive)
+	{
+		//cout << "Cruiser spotted!\n";
+		initial_hit[2] = pos;
+	}
+	// Submarine Spotted
+	else if (enemy_placement[x][y] <= 120 && enemy_ships[3]->getHealth() == alive)
+	{
+		//cout << "Sub spotted!\n";
+		initial_hit[3] = pos;
+	}
+	// Warship Spotted
+	else if (enemy_placement[x][y] <= 140 && enemy_ships[4]->getHealth() == alive)
+	{
+		//cout << "Warship spotted!\n";
+		initial_hit[4] = pos;
+	}
+
 }

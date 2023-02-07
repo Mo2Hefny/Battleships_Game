@@ -776,6 +776,7 @@ void GameSystem::GameComputer(Vector2i& pos)
 			cout << "!!TRACKING SYSTEM FAILED!!\n";
 		grid[0].HitGrid(pos2);
 		computer->updateEnemyPlacements();
+		computer->updateEnemyShips();
 	}
 	else
 	{
