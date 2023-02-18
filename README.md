@@ -3,8 +3,10 @@
 This is a replica of the classic [Battleship](https://en.wikipedia.org/wiki/Battleship_game) board game. This program was written entirely in C++ as a personal project in my learning journey.
 
 ## Installation
-Clone this repository, unzip the `Battleship.zip` file and launch the 'Battleship.exe` application.  
-`https://github.com/Mo2Hefny/Battleships_Game`
+Clone this repository, open the `Battleship` folder, and launch the `Battleship.exe` application.  
+`https://github.com/Mo2Hefny/Battleships_Game`  
+  
+To launch your executable file in case you played with the code,  open the following path. `x64/Debug/Battleship.exe`.
 
 ## Environment
 This project was built on Visual Studio using the [SFML](https://www.sfml-dev.org/) library.
@@ -21,7 +23,7 @@ To place a ship, select it from the _Ships section_ and move it to the desired l
 
 ![image](https://user-images.githubusercontent.com/111001850/216161216-e64ee77d-5715-4688-ab85-d4db3acf40bc.png)
 
-Once you've placed all your ships in a legal way, you can start the game by hitting `Enter`.
+Once you've legally placed all your ships, you can start the game by hitting `Enter`.
 
 ### II. Gameplay Phase
 
@@ -41,7 +43,7 @@ The current implementations of various strategies to challenge the player:
 
 ![finish_ship](https://user-images.githubusercontent.com/111001850/216166124-800a5a91-6214-4ff0-b108-ab51ac2a61ef.png)
 
-- **Checking Other Ships**: checks if another ship was hit while destroying the found ship and finishing it.
+- **Checking Other Ships**: checks if another ship was hit while destroying and finishing the found ship.
 
 ![hit_path](https://user-images.githubusercontent.com/111001850/216166535-b3721f14-6269-4f08-80e7-075a2bb374a9.png)
 
