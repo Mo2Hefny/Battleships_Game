@@ -3,7 +3,7 @@
 This is a replica of the classic [Battleship](https://en.wikipedia.org/wiki/Battleship_game) board game. This program was written entirely in C++ as a personal project in my learning journey.
 
 ## Installation
-Clone this repository and run the `.sln` file.  
+Clone this repository, unzip the `Battleship.zip` file and launch the 'Battleship.exe` application.  
 `https://github.com/Mo2Hefny/Battleships_Game`
 
 ## Environment
