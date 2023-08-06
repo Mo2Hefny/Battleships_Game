@@ -6,19 +6,8 @@ MainMenu::MainMenu(RenderWindow& window)
 	// Pointer to window
 	Menu = &window;
 
-	// Set Backgrounds
-	switch (abs(rand()) % 3)
-	{
-	case 0:
-		Background_img.loadFromFile(".\\Images\\Menu.jpg");
-		break;
-	case 1:
-		Background_img.loadFromFile(".\\Images\\Menu1.jpg");
-		break;
-	case 2:
-		Background_img.loadFromFile(".\\Images\\Menu_Background.jpg");
-		break;
-	}
+	// Set Background
+	Background_img.loadFromFile(".\\Images\\Menu1.jpg");
 
 	// Set Game Font
 	if (!font.loadFromFile(".\\Font\\Alexandria.ttf"))
@@ -285,7 +274,6 @@ void MainMenu::Execute()
 				}
 			}
 		}
-
 		// Updates Window
 		Menu->clear();
 		Menu->draw(Background);

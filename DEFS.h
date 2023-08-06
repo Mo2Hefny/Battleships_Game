@@ -1,5 +1,5 @@
-#ifndef _DEF_
-#define _DEF_
+#ifndef _DEFS_
+#define _DEFS_
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -14,9 +14,17 @@
 
 __declspec(selectany) //This line to prevent "redefinition error"
 
+int dx[] = { -1, 0, 1, 0 };
+
+__declspec(selectany)
+
+int dy[] = { 0, 1, 0, -1 };
+
+__declspec(selectany)
+
 int MUSIC_VOLUME = 50;
 
-__declspec(selectany) //This line to prevent "redefinition error"
+__declspec(selectany)
 
 int VOLUME = 30;
 

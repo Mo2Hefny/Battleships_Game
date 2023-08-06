@@ -2,8 +2,10 @@
 
 Grid::Grid()
 {
+	placement = new int* [10];
 	for (int i = 0; i < 10; i++)
 	{
+		placement[i] = new int[10];
 		for (int j = 0; j < 10; j++)
 		{
 			grid[i][j].setSize(Vector2f(25, 25));
@@ -64,21 +66,21 @@ void Grid::ColorShip(Color& c, vector<Vector2i>& hitbox)
 {
 	for (int i = 0; i < hitbox.size(); i++)
 	{
-		if (placement[hitbox[i].x][hitbox[i].y] == 0 && c == UI.GridColor)
+		if (placement[hitbox[i].y][hitbox[i].x] == 0 && c == UI.GridColor)
 		{
-			grid[hitbox[i].x][hitbox[i].y].setFillColor(c);
+			grid[hitbox[i].y][hitbox[i].x].setFillColor(c);
 		}
-		else if (placement[hitbox[i].x][hitbox[i].y] != 0 && c == UI.GridColor && UI.mode == game)
+		else if (placement[hitbox[i].y][hitbox[i].x] != 0 && c == UI.GridColor && UI.mode == game)
 		{
-			grid[hitbox[i].x][hitbox[i].y].setFillColor(c);
+			grid[hitbox[i].y][hitbox[i].x].setFillColor(c);
 		}
-		else if (placement[hitbox[i].x][hitbox[i].y] != 0 && c == UI.GridColor)
+		else if (placement[hitbox[i].y][hitbox[i].x] != 0 && c == UI.GridColor)
 		{
-			grid[hitbox[i].x][hitbox[i].y].setFillColor(UI.ShipColor);
+			grid[hitbox[i].y][hitbox[i].x].setFillColor(UI.ShipColor);
 		}
 		else if (c != UI.GridColor)
 		{
-			grid[hitbox[i].x][hitbox[i].y].setFillColor(c);
+			grid[hitbox[i].y][hitbox[i].x].setFillColor(c);
 		}
 	}
 }
@@ -134,9 +136,9 @@ void Grid::setPlacements(vector<Vector2i> hitbox, int mode)
 	{
 		int x = hitbox[i].x, y = hitbox[i].y;
 		if (mode)	//add ship hitbox
-			placement[x][y] -= 1;
+			placement[y][x] -= 1;
 		else		//remove ship hitbox
-			placement[x][y] = (placement[x][y] + 1 > 0) ? 0 : placement[x][y] + 1;
+			placement[y][x] = (placement[y][x] + 1 > 0) ? 0 : placement[y][x] + 1;
 	}
 }
 
@@ -150,26 +152,11 @@ void Grid::setPlacements(vector<Vector2i> hitbox, int mode)
 int Grid::HitGrid(Vector2i& pos)
 {
 	int x = pos.x; int y = pos.y;
-	int gx = grid[x][y].getPosition().x; int gy = grid[x][y].getPosition().y;
-	if (placement[x][y] == 0)
+	int gx = grid[y][x].getPosition().x; int gy = grid[y][x].getPosition().y;
+	// Hit Target
+	if (placement[y][x])
 	{
-		placement[x][y] = -5;
-		shots[shot_count] = new CircleShape;
-		shots[shot_count]->setRadius(8);
-		shots[shot_count]->setPosition(gx + 4, gy + 4);
-		shots[shot_count]->setFillColor(UI.MissColorShots);
-		shots[shot_count]->setOutlineThickness(4);
-		shots[shot_count]->setOutlineColor(UI.Secondary);
-		shot_count++;
-		miss++;
-		
-		// Terminal Updates
-		printf("MISSED TARGET --- Misses: %d, Hits: %d\n", miss, hit);
-		return 0;
-	}
-	if (placement[x][y] == -1)
-	{
-		placement[x][y] = -10;
+		placement[y][x] = -1;
 		shots[shot_count] = new CircleShape;
 		shots[shot_count]->setRadius(8);
 		shots[shot_count]->setPosition(gx + 4, gy + 4);
@@ -183,5 +170,19 @@ int Grid::HitGrid(Vector2i& pos)
 		printf("HIT TARGET --- Misses: %d, Hits: %d\n", miss, hit);
 		return 1;
 	}
-	return -1;
+
+	// Missed Target
+	placement[y][x] = -1;
+	shots[shot_count] = new CircleShape;
+	shots[shot_count]->setRadius(8);
+	shots[shot_count]->setPosition(gx + 4, gy + 4);
+	shots[shot_count]->setFillColor(UI.MissColorShots);
+	shots[shot_count]->setOutlineThickness(4);
+	shots[shot_count]->setOutlineColor(UI.Secondary);
+	shot_count++;
+	miss++;
+
+	// Terminal Updates
+	printf("MISSED TARGET --- Misses: %d, Hits: %d\n", miss, hit);
+	return 0;
 }

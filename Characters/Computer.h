@@ -4,17 +4,20 @@
 #include "Player.h"
 #include <cstdlib>
 #include <time.h>
+#include <stack>
 
 class Computer : public Character
 {
-	int enemy_placement[10][10];
+	int** enemy_placement;
 	Ship* enemy_ships[5];
 	Player* player;
 
 	//Fighting System
-	int north, east, south, west;  // 0 if not tested, 1 if true, -1 otherwise
+	int directions[4];  // 0 if not tested, 1 if true, -1 otherwise
+	int direction;		// 0 West, 1 North, 2 East, 3 South
 	int spotted, total_spotted;
-	Vector2i initial_hit[5], path;
+	std::stack<Vector2i> initial_hit, unfinished_ships;
+	Vector2i* currTarget, path;
 
 
 public:
@@ -31,15 +34,16 @@ public:
 	//Gameplay Phase
 	void PickTarget(Vector2i&);
 	bool CheckShips(Vector2i&);
-	bool CheckArea(Vector2i&, int);
-	void updateEnemyPlacements();
+	int CheckArea(Vector2i&);
+	bool UpdateHitStack(Vector2i&);
+	void ChooseDirection();
 	void updateEnemyShips();
 	bool FinishShips(Vector2i&);
+	bool UpdatePath(Vector2i&);
 	bool TestHitPath(Vector2i&);
 	void MoveInPath(Vector2i&);
 
 	//getters
-	Vector2i getInitialHit(int i) const { return initial_hit[(i > 4) ? 4 : i]; }
 		
 	//setters
 	void setEnemyInfo(Player*);

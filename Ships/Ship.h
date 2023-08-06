@@ -31,6 +31,7 @@ public:
 	void AddToHitbox(Vector2i h) { hitbox.push_back(h); }
 	void setRotation(Direction d) { rotation = d; }
 	void setHealth(PlayerState mode) { health = mode; }
+	void changeHitboxValues(int value, int**& grid);
 	bool setRow(int r);
 	bool setColumn(int c);
 

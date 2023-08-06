@@ -10,7 +10,7 @@ using namespace sf;
 
 class Grid
 {
-	int placement[10][10], shot_count, hit, miss;
+	int** placement, shot_count, hit, miss;
 	RectangleShape grid[10][10];
 	CircleShape* shots[100];
 	RenderWindow* game_window;
@@ -21,7 +21,7 @@ public:
 	// Preparation Phase
 	void resetPlacements();
 	int CheckValidity();
-	
+
 	// Gameplay Phase
 	int HitGrid(Vector2i&);
 
@@ -31,6 +31,9 @@ public:
 	// setters
 	void setPlacements(vector<Vector2i>, int);
 	void setWindow(RenderWindow& window) { game_window = &window; }
+
+	// getters
+	int**& getPlacements() { return placement; }
 };
 
 #endif

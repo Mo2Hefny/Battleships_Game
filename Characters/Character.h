@@ -13,10 +13,10 @@ class Character
 {
 protected:
 	PlayerState state;
-	int placement[10][10];
-	Grid* player_grid;
+	int** placement;
+	Grid* character_grid;
 	RenderWindow* game_window;
-	Ship* player_ships[5];
+	Ship* character_ships[5];
 
 public:
 	Character(RenderWindow& window, Grid* grid);
@@ -31,9 +31,9 @@ public:
 	//void setGameSystem(GameSystem& game);
 
 	//getters
-	int getPlacement(int i, int j) { return placement[i][j]; }
+	int** getPlacement() { return placement; }
 	PlayerState getState() const { return state; }
-	Ship* getShip(int index) const { return player_ships[index]; }
+	Ship* getShip(int index) const { return character_ships[index]; }
 
 };
 

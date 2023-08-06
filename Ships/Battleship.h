@@ -5,6 +5,7 @@
 
 class Battleship : public Ship
 {
+	int position;
 public:
 	Battleship();
 };

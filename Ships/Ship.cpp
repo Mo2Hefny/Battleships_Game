@@ -18,16 +18,16 @@ void Ship::PrepPhase()
 	{
 		for (int i = 0; i < hitbox.size(); i++)
 		{
-			hitbox[i].x = r;
-			hitbox[i].y = c++;
+			hitbox[i].y = r;
+			hitbox[i].x = c++;
 		}
 	}
 	else
 	{
 		for (int i = 0; i < hitbox.size(); i++)
 		{
-			hitbox[i].x = r++;
-			hitbox[i].y = c;
+			hitbox[i].y = r++;
+			hitbox[i].x = c;
 		}
 	}
 	
@@ -49,7 +49,7 @@ void Ship::MoveUp()
 		int r = --row;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
-			hitbox[i].x = r;
+			hitbox[i].y = r;
 		}
 	}
 	// Vetrical
@@ -63,7 +63,7 @@ void Ship::MoveUp()
 		int r = --row;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
-			hitbox[i].x = r++;
+			hitbox[i].y = r++;
 		}
 	}
 
@@ -86,7 +86,7 @@ void Ship::MoveDown()
 		int r = ++row;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
-			hitbox[i].x = r;
+			hitbox[i].y = r;
 		}
 	}
 	// Vertical
@@ -100,7 +100,7 @@ void Ship::MoveDown()
 		int r = ++row;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
-			hitbox[i].x = r++;
+			hitbox[i].y = r++;
 		}
 	}
 
@@ -123,7 +123,7 @@ void Ship::MoveLeft()
 		int c = --col;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
-			hitbox[i].y = c++;
+			hitbox[i].x = c++;
 		}
 	}
 	// Vertical
@@ -137,7 +137,7 @@ void Ship::MoveLeft()
 		int c = --col;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
-			hitbox[i].y = c;
+			hitbox[i].x = c;
 		}
 	}
 
@@ -160,7 +160,7 @@ void Ship::MoveRight()
 		int c = ++col;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
-			hitbox[i].y = c++;
+			hitbox[i].x = c++;
 		}
 	}
 	// Vertical
@@ -174,7 +174,7 @@ void Ship::MoveRight()
 		int c = ++col;
 		for (int i = 0; i < hitbox.size(); i++)
 		{
-			hitbox[i].y = c;
+			hitbox[i].x = c;
 		}
 	}
 
@@ -186,8 +186,8 @@ void Ship::MoveRight()
 */
 void Ship::Rotate()
 {
-	int c = hitbox[0].y;
-	int r = hitbox[0].x;
+	int c = hitbox[0].x;
+	int r = hitbox[0].y;
 
 	// Horizontal to Vertical
 	if (getRotation() == horizontal)
@@ -200,8 +200,8 @@ void Ship::Rotate()
 		setRotation(vertical);
 		for (int i = 1; i < hitbox.size(); i++)
 		{
-			hitbox[i].x = ++r;
-			hitbox[i].y = c;
+			hitbox[i].y = ++r;
+			hitbox[i].x = c;
 		}
 	}
 	// Vertical to Horizontal
@@ -215,8 +215,8 @@ void Ship::Rotate()
 		setRotation(horizontal);
 		for (int i = 1; i < hitbox.size(); i++)
 		{
-			hitbox[i].x = r;
-			hitbox[i].y = ++c;
+			hitbox[i].y = r;
+			hitbox[i].x = ++c;
 		}
 	}
 
@@ -241,10 +241,10 @@ bool Ship::setRow(int r)
 	row = r;
 	if (getRotation() == horizontal)
 		for (int i = 0; i < hitbox.size(); i++)
-			hitbox[i].x = r;
+			hitbox[i].y = r;
 	else if (getRotation() == vertical)
 		for (int i = 0; i < hitbox.size(); i++)
-			hitbox[i].x = r++;
+			hitbox[i].y = r++;
 	return true;
 }
 
@@ -266,9 +266,21 @@ bool Ship::setColumn(int c)
 	col = c;
 	if (getRotation() == horizontal)
 		for (int i = 0; i < hitbox.size(); i++)
-			hitbox[i].y = c++;
+			hitbox[i].x = c++;
 	else if (getRotation() == vertical)
 		for (int i = 0; i < hitbox.size(); i++)
-			hitbox[i].y = c;
+			hitbox[i].x = c;
 	return true;
+}
+
+/*
+* changeHitboxValues - Updates the ship's positions value on grid.
+*
+* @param value - the new value for each position.
+* @param grid - the affected grid.
+*/
+void Ship::changeHitboxValues(int value, int**& grid)
+{ 
+	for (auto pos : hitbox)
+		grid[pos.y][pos.x] = value;
 }

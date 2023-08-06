@@ -713,6 +713,8 @@ void GameSystem::GamePhase()
 						continue;
 					if (grid[1].HitGrid(pos))
 					{
+						UI_s.explosion.play();
+						computer->CheckShipsHealth();
 						setString("Target Hit!");
 					}
 					else
@@ -774,23 +776,27 @@ void GameSystem::GameComputer(Vector2i& pos)
 		printf("Finishing Target (%d, %d)\n", pos2.x, pos2.y);
 		if (!player->ShotTracker(pos2))
 			cout << "!!TRACKING SYSTEM FAILED!!\n";
-		grid[0].HitGrid(pos2);
-		computer->updateEnemyPlacements();
-		computer->updateEnemyShips();
+		if (grid[0].HitGrid(pos2))
+		{
+			UI_s.explosion.play();
+			player->CheckShipsHealth();
+		}
 	}
 	else
 	{
 		computer->PickTarget(pos);
+
+		int x, y;
+		cout << "Enter Test shooting position: ";
+		cin >> x >> y;
+		if (x < 10) { pos.x = x; pos.y = y; }
+
 		printf("Target acquired (%d, %d)\n", pos.x, pos.y);
-		int x = grid[0].HitGrid(pos);
-		if (x == -1)
-			GameComputer(pos);
-		else
+		if (grid[0].HitGrid(pos))
 		{
-			if (x == 1)
-			{
-				computer->setInitialHit(pos);
-			}
+			computer->setInitialHit(pos);
+			UI_s.explosion.play();
+			player->CheckShipsHealth();
 		}
 	}
 	for (int i = 0; i < 5; i++)
@@ -985,7 +991,7 @@ Vector2i GameSystem::getGridPos()
 		if ((x - r * 5) - (r * 25) < 25 * 25 && (y - r * 5) - (r * 25) > 0)
 			row = r;
 	}
-	return Vector2i(row, col);
+	return Vector2i(col, row);
 }
 
 bool GameSystem::OpenedMenu()
