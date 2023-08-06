@@ -146,7 +146,7 @@ bool Computer::ValidPath(Vector2i& pos)
 {
 	int x = pos.x + dx[direction];
 	int y = pos.y + dy[direction];
-	return !(x < 0 || y < 0 || x >= 10 || y >= 10 || !~directions[direction]);
+	return !(x < 0 || y < 0 || x >= 10 || y >= 10 || !~directions[direction] || enemy_placement[x][y] < 0);
 }
 
 bool Computer::UpdateHitStack(Vector2i& pos)
@@ -163,7 +163,20 @@ bool Computer::UpdateHitStack(Vector2i& pos)
 
 				// Switch path direction to the opposite side
 				if (direction == i)
+				{
 					direction = (direction + 2) % 4;
+					int res;
+					do {
+						unfinished_ships.push(pos);
+						initial_hit.pop();
+						if (initial_hit.empty()) return false;
+						pos = initial_hit.top();
+						int x = pos.x + dx[direction];
+						int y = pos.y + dy[direction];
+						res = enemy_placement[y][x];
+					} while (!~res);
+					return UpdateHitStack(pos);
+				}
 			}
 			else if (enemy_placement[y][x] < 0)	// if position was already attacked
 			{
@@ -175,6 +188,7 @@ bool Computer::UpdateHitStack(Vector2i& pos)
 		if (!cnt)
 		{
 			initial_hit.pop();
+			if (initial_hit.empty()) return false;
 			pos = initial_hit.top();
 		}
 	} while (!cnt && !initial_hit.empty());
@@ -201,7 +215,7 @@ bool Computer::FinishShips(Vector2i& pos)
 			unfinished_ships.pop();
 		}
 	}
-	Vector2i p, mainpoint;
+	Vector2i mainpoint;
 	do {
 		mainpoint = initial_hit.top();
 		if (enemy_placement[mainpoint.y][mainpoint.x] == -2)
@@ -219,8 +233,8 @@ bool Computer::FinishShips(Vector2i& pos)
 
 	if (!~direction || !ValidPath(mainpoint)) // No chosen path or it is invalid
 	{
-		if (!UpdateHitStack(mainpoint))	return false;
-		ChooseDirection();
+		if (!UpdateHitStack(mainpoint))	return FinishShips(pos);
+		if (!~direction || !~directions[direction]) ChooseDirection();
 	}
 	
 	// Chose a path.
@@ -244,7 +258,7 @@ bool Computer::FinishShips(Vector2i& pos)
 		do {
 			unfinished_ships.push(mainpoint);
 			initial_hit.pop();
-			if (initial_hit.empty()) return true;
+			if (initial_hit.empty()) break;
 			mainpoint = initial_hit.top();
 			int x = mainpoint.x + dx[direction];
 			int y = mainpoint.y + dy[direction];
@@ -259,6 +273,7 @@ bool Computer::FinishShips(Vector2i& pos)
 		{
 			directions[direction] = -1;
 		}
+		if ((pos.x < 0 || pos.y < 0 || pos.x >= 10 || pos.y >= 10))	return FinishShips(pos);
 	}
 	return true;
 }

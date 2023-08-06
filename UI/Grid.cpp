@@ -66,6 +66,7 @@ void Grid::ColorShip(Color& c, vector<Vector2i>& hitbox)
 {
 	for (int i = 0; i < hitbox.size(); i++)
 	{
+		if (!~hitbox[i].x)	break;
 		if (placement[hitbox[i].y][hitbox[i].x] == 0 && c == UI.GridColor)
 		{
 			grid[hitbox[i].y][hitbox[i].x].setFillColor(c);
@@ -107,7 +108,7 @@ int Grid::CheckValidity()
 	}
 	if (count == 83)		// 17 cubes are occupied.
 		return 1;
-	return -1;				// less than 17 cubes are occupied.
+	return 0;				// less than 17 cubes are occupied.
 }
 
 /*
@@ -135,11 +136,24 @@ void Grid::setPlacements(vector<Vector2i> hitbox, int mode)
 	for (int i = 0; i < hitbox.size(); i++)
 	{
 		int x = hitbox[i].x, y = hitbox[i].y;
+		if (!~x) {
+			x = 0;
+			break;
+		}
 		if (mode)	//add ship hitbox
-			placement[y][x] -= 1;
+			placement[y][x]--;
 		else		//remove ship hitbox
 			placement[y][x] = (placement[y][x] + 1 > 0) ? 0 : placement[y][x] + 1;
 	}
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			cout << placement[i][j] << " ";
+		}
+		cout << endl;
+	}
+	cout << endl;
 }
 
 /*
