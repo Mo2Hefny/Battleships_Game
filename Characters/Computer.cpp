@@ -244,6 +244,7 @@ bool Computer::FinishShips(Vector2i& pos)
 		do {
 			unfinished_ships.push(mainpoint);
 			initial_hit.pop();
+			if (initial_hit.empty()) return true;
 			mainpoint = initial_hit.top();
 			int x = mainpoint.x + dx[direction];
 			int y = mainpoint.y + dy[direction];
