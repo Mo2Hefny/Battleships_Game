@@ -14,11 +14,8 @@ class Computer : public Character
 
 	//Fighting System
 	int directions[4];  // 0 if not tested, 1 if true, -1 otherwise
-	int direction;		// 0 West, 1 North, 2 East, 3 South
-	int spotted, total_spotted;
+	int direction;		// 0 West, 1 South, 2 East, 3 North
 	std::stack<Vector2i> initial_hit, unfinished_ships;
-	Vector2i* currTarget, path;
-
 
 public:
 	Computer(RenderWindow& window, Grid* grid);
@@ -37,17 +34,11 @@ public:
 	int CheckArea(Vector2i&);
 	bool UpdateHitStack(Vector2i&);
 	void ChooseDirection();
-	void updateEnemyShips();
 	bool FinishShips(Vector2i&);
-	bool UpdatePath(Vector2i&);
-	bool TestHitPath(Vector2i&);
-	void MoveInPath(Vector2i&);
+	bool ValidPath(Vector2i&);
 
-	//getters
-		
 	//setters
 	void setEnemyInfo(Player*);
-	void setHitPath(Vector2i);
 	void setInitialHit(Vector2i pos);
 };
 

@@ -785,12 +785,6 @@ void GameSystem::GameComputer(Vector2i& pos)
 	else
 	{
 		computer->PickTarget(pos);
-
-		int x, y;
-		cout << "Enter Test shooting position: ";
-		cin >> x >> y;
-		if (x < 10) { pos.x = x; pos.y = y; }
-
 		printf("Target acquired (%d, %d)\n", pos.x, pos.y);
 		if (grid[0].HitGrid(pos))
 		{

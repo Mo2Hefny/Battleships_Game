@@ -9,9 +9,6 @@ Computer::Computer(RenderWindow& window, Grid* grid) : Character(window, grid)
 	character_ships[3] = new Submarine();
 	character_ships[4] = new Warship();
 	for (auto& direction : directions)	direction = 0;
-
-	spotted = -1;
-	currTarget = NULL;
 }
 
 Computer::~Computer()
@@ -145,14 +142,11 @@ int Computer::CheckArea(Vector2i& pos)
 	return max(res, n);
 }
 
-bool Computer::UpdatePath(Vector2i& pos)
+bool Computer::ValidPath(Vector2i& pos)
 {
 	int x = pos.x + dx[direction];
 	int y = pos.y + dy[direction];
-	if (x < 0 || y < 0 || x >= 10 || y >= 10 || !~directions[direction]) return false;
-	path.x = x;
-	path.y = y;
-	return true;
+	return !(x < 0 || y < 0 || x >= 10 || y >= 10 || !~directions[direction]);
 }
 
 bool Computer::UpdateHitStack(Vector2i& pos)
@@ -223,16 +217,7 @@ bool Computer::FinishShips(Vector2i& pos)
 	} while (enemy_placement[mainpoint.y][mainpoint.x] == -2 && !initial_hit.empty());
 	if (initial_hit.empty()) return false;
 
-	if (!~spotted)
-	{
-		int d;
-		cout << "Enter Test direction: ";
-		cin >> d;
-		if (d < 4) { direction = d; };
-		spotted = 1;
-	}
-
-	if (!~direction || !UpdatePath(mainpoint)) // No chosen path or it is invalid
+	if (!~direction || !ValidPath(mainpoint)) // No chosen path or it is invalid
 	{
 		if (!UpdateHitStack(mainpoint))	return false;
 		ChooseDirection();
