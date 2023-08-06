@@ -646,11 +646,12 @@ void GameSystem::PrepComputer()
 		}
 	} while (!grid[1].CheckValidity());
 
-
+	/*
 	for (int i = 0; i < 5; i++)
 	{
 		UpdateGrid(UI.HitColor, computer->getShip(i)->getHitbox(), AIplayer);
 	}
+	*/
 }
 
 void GameSystem::UpdateGrid(Color& c, vector<Vector2i>& hitbox, TeamOpt team)
