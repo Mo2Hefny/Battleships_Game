@@ -227,7 +227,7 @@ bool Computer::FinishShips(Vector2i& pos)
 	pos.x = mainpoint.x + dx[direction];
 	pos.y = mainpoint.y + dy[direction];
 
-	if (enemy_placement[pos.y][pos.x] == 1)
+	if (!(pos.x < 0 || pos.y < 0 || pos.x >= 10 || pos.y >= 10) && enemy_placement[pos.y][pos.x] == 1)
 	{
 		initial_hit.push(pos);
 	}
