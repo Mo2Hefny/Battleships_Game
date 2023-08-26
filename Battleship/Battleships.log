@@ -1,14 +1,219 @@
-﻿  Computer.cpp
-C:\Users\Moamen\OneDrive\GitHub\Battleships\DEFS.h(147,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Moamen\OneDrive\GitHub\Battleships\DEFS.h(148,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Moamen\OneDrive\GitHub\Battleships\DEFS.h(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Moamen\OneDrive\GitHub\Battleships\DEFS.h(150,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Moamen\OneDrive\GitHub\Battleships\DEFS.h(151,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Moamen\OneDrive\GitHub\Battleships\DEFS.h(152,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Moamen\OneDrive\GitHub\Battleships\DEFS.h(153,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Moamen\OneDrive\GitHub\Battleships\DEFS.h(154,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Moamen\OneDrive\GitHub\Battleships\DEFS.h(155,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Moamen\OneDrive\GitHub\Battleships\DEFS.h(156,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Moamen\OneDrive\GitHub\Battleships\DEFS.h(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Moamen\OneDrive\GitHub\Battleships\Characters\Computer.cpp(5,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Battleships.vcxproj -> C:\Users\Moamen\OneDrive\GitHub\Battleships\x64\Debug\Battleships.exe
+﻿  Battleships.cpp
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(147,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(148,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(150,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(151,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(152,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(153,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(154,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(155,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(156,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Character.cpp
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(147,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(148,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(150,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(151,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(152,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(153,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(154,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(155,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(156,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\Characters\Character.cpp(61,6): warning C4101: 'n': unreferenced local variable
+  Computer.cpp
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(147,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(148,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(150,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(151,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(152,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(153,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(154,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(155,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(156,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\Characters\Computer.cpp(5,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Player.cpp
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(147,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(148,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(150,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(151,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(152,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(153,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(154,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(155,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(156,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Battleship.cpp
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(147,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(148,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(150,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(151,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(152,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(153,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(154,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(155,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(156,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Carrier.cpp
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(147,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(148,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(150,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(151,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(152,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(153,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(154,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(155,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(156,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Cruiser.cpp
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(147,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(148,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(150,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(151,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(152,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(153,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(154,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(155,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(156,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Ship.cpp
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(147,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(148,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(150,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(151,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(152,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(153,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(154,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(155,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(156,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Submarine.cpp
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(147,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(148,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(150,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(151,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(152,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(153,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(154,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(155,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(156,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Warship.cpp
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(147,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(148,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(150,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(151,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(152,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(153,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(154,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(155,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(156,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Grid.cpp
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(147,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(148,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(150,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(151,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(152,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(153,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(154,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(155,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(156,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\UI\Grid.cpp(46,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\UI\Grid.cpp(46,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\UI\Grid.cpp(169,9): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Moamen\OneDrive\Battleships_Game\UI\Grid.cpp(169,46): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Moamen\OneDrive\Battleships_Game\UI\Grid.cpp(176,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\UI\Grid.cpp(176,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\UI\Grid.cpp(192,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\UI\Grid.cpp(192,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Main_Menu.cpp
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(147,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(148,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(150,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(151,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(152,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(153,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(154,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(155,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(156,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\UI\Main_Menu.cpp(5,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\UI\Main_Menu.cpp(30,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\UI\Main_Menu.cpp(30,39): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=int
+          ]
+  GameSystem.cpp
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(147,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(148,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(150,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(151,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(152,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(153,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(154,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(155,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(156,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(78,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(78,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(83,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(83,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(88,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(97,92): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(104,112): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(110,112): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(117,27): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(117,22): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(127,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(133,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(134,22): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(139,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(140,25): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(140,19): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(145,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(146,21): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(146,15): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(151,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(152,25): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(152,19): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(158,26): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Moamen\OneDrive\Battleships_Game\GameManager\GameSystem.cpp(158,21): warning C4305: 'argument': truncation from 'double' to 'float'
+  Options.cpp
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(147,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(148,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(150,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(151,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(152,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(153,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(154,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(155,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(156,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Moamen\OneDrive\Battleships_Game\DEFS.h(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Battleships.vcxproj -> C:\Users\Moamen\OneDrive\Battleships_Game\x64\Debug\Battleships.exe
